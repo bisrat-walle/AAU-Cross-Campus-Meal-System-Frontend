@@ -1,0 +1,14 @@
+nav.navbar.navbar-light.bg-light {
+    padding: 5px 50px;
+}
+
+.main-title{
+	font-family: Red Hat Display;
+	font-size: 144px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 191px;
+	letter-spacing: 0em;
+	text-align: left;
+}
+
