@@ -7,6 +7,14 @@ import { ScannerComponent } from './scanner/scanner.component';
 import { StudentsComponent } from './students/students.component';
 import { UsersComponent } from './users/users.component';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { ShowUsersComponent } from './users/show-users/show-users.component';
+import { AddEditUsersComponent } from './users/add-edit-users/add-edit-users.component';
+import { ShowStudentsComponent } from './students/show-students/show-students.component';
+import { AddEditStudentsComponent } from './students/add-edit-students/add-edit-students.component';
+import { SharedService } from './shared.service';
+
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,13 +22,20 @@ import { ScheduleComponent } from './schedule/schedule.component';
     ScannerComponent,
     StudentsComponent,
     UsersComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    ShowUsersComponent,
+    AddEditUsersComponent,
+    ShowStudentsComponent,
+    AddEditStudentsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule, 
+    FormsModule, 
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

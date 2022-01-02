@@ -1,13 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-.main-body-back, .main-header-back{
-	z-index:-10;
+.main-header {
+    max-height: 100px;
+    min-width: 100%;
+	box-sizing: border-box;
 }
 
-.main-body-back{
-	max-width: 100%;
-	z-index: -12;
-}
-img.main-header-back {
+.main-header img {
     max-height: 100px;
-	width: 100%;
+    width: 100%;
 }
