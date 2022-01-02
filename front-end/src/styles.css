@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+.main-header {
+    background-image: url('assets/header_background.svg');
+    min-height: 100px;
+    background-size: 100% 100px;
+    background-repeat: no-repeat;
+    min-width: 100%;
+}
+
+.main-body {
+    background-image: url('assets/body_background.svg');
+    min-height: calc(100vh - 100px);
+    background-repeat: no-repeat;
+    background-size: auto 100vh;
+}
