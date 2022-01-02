@@ -2,10 +2,12 @@
 .main-header {
     max-height: 100px;
     min-width: 100%;
-	box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 50px;
 }
 
 .main-header img {
     max-height: 100px;
     width: 100%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }

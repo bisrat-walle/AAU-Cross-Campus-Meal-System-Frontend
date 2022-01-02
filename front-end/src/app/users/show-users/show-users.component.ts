@@ -10,16 +10,34 @@ export class ShowUsersComponent implements OnInit {
 
   constructor(private service:SharedService) { }
 
-  userList:any=[];
-
+  userList:any=[['Abebe', 'abebe1'],['Abebe', 'abebe1'], ['Abebe', 'abebe1'], ['Abebe', 'abebe1']];
+  
+  modalTitle:string="";
+  activateAddEditUserComp:boolean=false;
+  user:any;
+  
   ngOnInit(): void {
-    this.refreshUserList()
+    this.refreshUserList();
   }
 
   refreshUserList(){
     this.service.getUserList().subscribe(data =>{
       this.userList = data;
     })
+  }
+
+  addClick(){
+    this.user={
+      userId:0,
+      userName:""
+    }
+    this.modalTitle = "Add User";
+    this.activateAddEditUserComp = true;
+  }
+
+  closeClick(){
+    this.activateAddEditUserComp=false;
+    //this.refreshUserList();
   }
 
 }

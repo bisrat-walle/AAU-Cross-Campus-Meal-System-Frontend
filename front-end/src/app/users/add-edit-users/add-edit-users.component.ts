@@ -9,6 +9,8 @@ export class AddEditUsersComponent implements OnInit {
 
   constructor() { }
 
+  user:any;
+
   ngOnInit(): void {
   }
 
