@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     HttpClientModule, 
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+	NgbModule
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]
