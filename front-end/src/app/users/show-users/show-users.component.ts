@@ -10,9 +10,9 @@ export class ShowUsersComponent implements OnInit {
 
   constructor(private service:SharedService) { }
 
-  userList:any=[['Abebe', 'abebe1'],['Abebe', 'abebe1'], ['Abebe', 'abebe1'], ['Abebe', 'abebe1']];
+  userList:any=[];
   
-  modalTitle:string="";
+  modalTitle: string="";
   activateAddEditUserComp:boolean=false;
   user:any;
   
@@ -37,7 +37,7 @@ export class ShowUsersComponent implements OnInit {
 
   closeClick(){
     this.activateAddEditUserComp=false;
-    //this.refreshUserList();
+    this.refreshUserList();
   }
 
 }
