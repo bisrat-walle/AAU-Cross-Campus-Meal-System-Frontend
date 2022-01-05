@@ -1,13 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 .main-header {
-    max-height: 100px;
+    max-height: 80px;
     min-width: 100%;
     box-sizing: border-box;
     margin-bottom: 50px;
 }
 
 .main-header img {
-    max-height: 100px;
+    max-height: 80px;
     width: 100%;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }

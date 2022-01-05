@@ -1,4 +1,8 @@
 .navbar-specific, .admin-nav{
-    justify-content: space-evenly;
+    padding-left: 20px;
+	padding-right: 20px;
 }
 
+.admin-nav{
+	justify-content: space-between;
+}

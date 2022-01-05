@@ -1,7 +1,13 @@
-<p>scanner works!</p>
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand">Navbar</a>
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-  </form>
+<nav class="admin-nav navbar navbar-expand-sm bg-light navbar-dark">
+  <h4>Scan Student ID</h4>
+  <button type="button" class="btn btn-secondary btn-sm">Logout</button>
 </nav>
+
+<div style="margin-bottom:50px;"></div>
+<app-verify-failed></app-verify-failed>
+
+<div class="text-center" style="margin-top:50px">
+	<button routerLink="scanner/failed" type="button" class="btn btn-lg btn-outline-primary">Back to Scanner</button>
+</div>
+
+<router-outlet name="sub"></router-outlet>

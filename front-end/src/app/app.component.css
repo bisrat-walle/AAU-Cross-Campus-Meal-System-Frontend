@@ -1,0 +1,11 @@
+.getStarted{
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin: auto;
+    max-width: 500px;
+    vertical-align: middle;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 50px;	
+}

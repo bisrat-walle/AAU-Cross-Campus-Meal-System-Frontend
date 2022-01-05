@@ -18,6 +18,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AddEditScheduleComponent } from './schedule/add-edit-schedule/add-edit-schedule.component';
+import { ShowScheduleComponent } from './schedule/show-schedule/show-schedule.component';
+import { VerifySucessComponent } from './scanner/verify-sucess/verify-sucess.component';
+import { VerifyFailedComponent } from './scanner/verify-failed/verify-failed.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ShowStudentsComponent,
     AddEditStudentsComponent,
     HomePageComponent,
-    LoginComponent
+    LoginComponent,
+    AddEditScheduleComponent,
+    ShowScheduleComponent,
+    VerifySucessComponent,
+    VerifyFailedComponent
   ],
   imports: [
     BrowserModule,

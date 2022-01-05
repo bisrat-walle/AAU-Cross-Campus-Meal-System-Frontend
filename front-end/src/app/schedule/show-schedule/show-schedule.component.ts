@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { SharedService } from 'src/app/shared.service';
 
-
 @Component({
-  selector: 'app-show-students',
-  templateUrl: './show-students.component.html',
-  styleUrls: ['./show-students.component.css']
+  selector: 'app-show-schedule',
+  templateUrl: './show-schedule.component.html',
+  styleUrls: ['./show-schedule.component.css']
 })
-export class ShowStudentsComponent implements OnInit {
+export class ShowScheduleComponent implements OnInit {
 
-  studentList:any=[];
+  scheduleList:any=[];
   modalTitle: string="";
   activateAddEditUserComp:boolean=false;
   user:any;
@@ -19,12 +19,12 @@ export class ShowStudentsComponent implements OnInit {
   constructor(private service: SharedService, private modalService:NgbModal) { }
 
   ngOnInit(): void {
-    this.refreshStudentList()
+	this.refreshScheduleList()
   }
-
-  refreshStudentList(){
-    this.service.getStudentList().subscribe(data =>{
-      this.studentList = data;
+  
+  refreshScheduleList(){
+    this.service.getScheduleList().subscribe(data =>{
+      this.scheduleList = data;
     })
   }
 

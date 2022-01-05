@@ -1,33 +1,40 @@
 <ng-template #mymodal let-modal>
     <div class="modal-header">
-      <h4 class="modal-title d-flex justify-content-center" id="modal-basic-title">Add Student</h4>
+      <h4 class="modal-title d-flex justify-content-center" id="modal-basic-title">Add Schedule</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">×</span>
       </button>
     </div>
     <div class="modal-body">
-      <app-add-edit-students></app-add-edit-students>
+      <app-add-edit-schedule></app-add-edit-schedule>
     </div>
   </ng-template>
   
   <nav class="navbar-specific navbar navbar-light bg-white">
-      <a class="navbar-brand">Students</a>
+      <a class="navbar-brand">Schedules</a>
       <form class="form-inline">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search by ID" aria-label="Search">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       </form>
     </nav>
     <hr>
     
     <table class="table table-striped">
       <thead>
-        <th>Name</th>
-        <th>ID</th>
-        <th>Options</th>
+		<th>Batch</th>
+		<th>Campus</th>
+        <th>Departement</th>
+        <th>Section</th>
+        <th>Day</th>
+		<th>Time</th>
       </thead>
       <tbody>
-        <tr *ngFor="let student of studentList">
-            <td>{{student.name}}</td>
-            <td>{{student.id}}</td>
+        <tr *ngFor="let schedule of scheduleList">
+            <td>{{schedule.batch}}</td>
+            <td>{{schedule.campus}}</td>
+			<td>{{schedule.department}}</td>
+			<td>{{schedule.section}}</td>
+			<td>{{schedule.DAY}}</td>
+			<td>{{schedule.time}}</td>
             <td>
                 <button type="button" class="btn btn-light mr-1" style="margin-right:10px;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -54,4 +61,4 @@
   </svg></button>
   </div>
   
-  
+ 
