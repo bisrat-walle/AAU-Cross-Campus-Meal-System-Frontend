@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-scanner',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScannerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+  }
+  
+  isScannerPage():boolean{
+	return this.router.url == "/scanner";
+  }
+  
+  isScannerFailedPage():boolean{
+	return this.router.url == "/scanner/failed";
+  }
+  
+  isScannerSuccessPage():boolean{
+	return this.router.url == "/scanner/verified";
   }
 
 }

@@ -13,7 +13,9 @@ const routes: Routes = [
   {path:'user', component: UsersComponent},
   {path:'scanner', component: ScannerComponent, 
    children: [
-    {path:'failed',component:VerifyFailedComponent,outlet:"sub"}
+    {path:'', redirectTo:"login", pathMatch:"full"},
+    {path:'failed',component:ScannerComponent},
+	{path:'verified',component:ScannerComponent}
    ]
   },
 

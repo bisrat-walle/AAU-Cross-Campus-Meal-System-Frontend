@@ -1,17 +1,46 @@
-<form>
+<form (ngSubmit)="addUser(addUserForm)" #addUserForm=ngForm id="addUserForm" *ngIf="!isUpdateUserForm">
   <div class="form-group">
-	<label for="exampleInputEmail1">Email address</label>
-	<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+	<label for="exampleInputEmail1">ID</label>
+	<input ngModel name="id" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter user id">
   </div>
   <div class="form-group">
 	<label for="exampleInputEmail1">Username</label>
-	<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+	<input ngModel name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
   </div>
   <div class="form-group">
+  <label for="exampleInputEmail1">Name</label>
+	<input ngModel name="name" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter username">
+  </div>
+  <!-- <div class="form-group">
 	<label for="exampleInputPassword1">Password</label>
 	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="text-center">
+  </div> -->
+  <div class="text-center" style="margin-top: 30px;">
 	<button type="submit" class="btn btn-primary">Add</button>
+  </div>
+</form>
+
+<span class="modal-basic-title"></span>
+
+
+<form (ngSubmit)="updateUser(updateUserForm)" #updateUserForm=ngForm id="updateUserForm" *ngIf="isUpdateUserForm">
+  <div class="form-group">
+  <label for="exampleInputEmail1">ID</label>
+  <input ngModel name="id" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder={{user.id}}>
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1">Username</label>
+  <input ngModel name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder={{user.username}}>
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail2">Name</label>
+  <input ngModel name="name" type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder={{user.name}}>
+  </div>
+  <!-- <div class="form-group">
+  <label for="exampleInputPassword1">Password</label>
+  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div> -->
+  <div class="text-center" style="margin-top: 30px;">
+  <button type="submit" class="btn btn-primary">Update</button>
   </div>
 </form>

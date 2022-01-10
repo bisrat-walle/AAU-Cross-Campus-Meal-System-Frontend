@@ -30,6 +30,10 @@ export class SharedService {
     return this.http.get<any>(this.APIUrl + '/user/');
   }
 
+  getUser(id:any){
+    return this.http.get<any>(this.APIUrl + '/user/', id);
+  }
+
   addUser(val:any){
     return this.http.post(this.APIUrl + '/user/', val);
   }
@@ -39,6 +43,7 @@ export class SharedService {
   }
 
   deleteUser(val:any){
+    console.log("User is deleted!");
     return this.http.delete(this.APIUrl + '/user/', val);
   }
 

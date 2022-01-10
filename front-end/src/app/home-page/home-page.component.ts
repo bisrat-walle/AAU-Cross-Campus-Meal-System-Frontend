@@ -14,6 +14,9 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     document.querySelector('.title__main')?.classList.add('getStarted');
   }
-
+	
+  ngOnDestroy(): void {
+    document.querySelector('.title__main')?.classList.remove('getStarted');
+  }
   
 }

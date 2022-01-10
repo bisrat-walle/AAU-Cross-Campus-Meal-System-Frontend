@@ -1,6 +1,6 @@
 <ng-template #mymodal let-modal>
     <div class="modal-header">
-      <h4 class="modal-title d-flex justify-content-center" id="modal-basic-title">Add Student</h4>
+      <h4 class="modal-title d-flex justify-content-center" id="modal-basic-title">Update Student</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">×</span>
       </button>
@@ -27,7 +27,7 @@
       <tbody>
         <tr *ngFor="let student of studentList">
             <td>{{student.name}}</td>
-            <td>{{student.id}}</td>
+            <td>{{student.student_id}}</td>
             <td>
                 <button type="button" class="btn btn-light mr-1" style="margin-right:10px;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-pencil-square" viewBox="0 0 16 16">
