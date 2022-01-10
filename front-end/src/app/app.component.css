@@ -1,8 +1,6 @@
 .getStarted{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    margin-top: auto;
     max-width: 500px;
-    vertical-align: middle;
     height: 200px;
     display: flex;
     flex-direction: column;
@@ -11,4 +9,11 @@
 }
 .meal-title{
 	text-align:center;
+}
+
+.cont-home-style {
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

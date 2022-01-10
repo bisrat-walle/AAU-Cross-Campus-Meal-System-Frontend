@@ -23,7 +23,7 @@ export class SharedService {
   }
 
   deleteStudent(val:any){
-    return this.http.delete(this.APIUrl + '/student/', val);
+    return this.http.delete(this.APIUrl + '/student/' + val);
   }
 
   getUserList():Observable<any[]>{
@@ -43,8 +43,7 @@ export class SharedService {
   }
 
   deleteUser(val:any){
-    console.log("User is deleted!");
-    return this.http.delete(this.APIUrl + '/user/', val);
+    return this.http.delete(this.APIUrl + '/user/' + val);
   }
 
   getScheduleList():Observable<any[]>{
@@ -60,7 +59,7 @@ export class SharedService {
   }
 
   deleteSchedule(val:any){
-    return this.http.delete(this.APIUrl + '/schedule/', val);
+    return this.http.delete(this.APIUrl + '/schedule/' + val);
   }
 
 }

@@ -1,17 +1,70 @@
-<form>
+<form (ngSubmit)="addStudent(addStudentForm)" #addStudentForm=ngForm id="addStudentForm" *ngIf="!isUpdateStudentForm">
   <div class="form-group">
-	<label for="exampleInputEmail1">ID</label>
-	<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter ID">
+	<label for="exampleInputEmail1">Student ID</label>
+	<input ngModel name="student_id" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter student id">
   </div>
   <div class="form-group">
 	<label for="exampleInputEmail1">Name</label>
-	<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name">
+	<input ngModel name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
   </div>
   <div class="form-group">
-	<label for="exampleInputPassword1">Campus</label>
-	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Campus">
+  <label for="exampleInputEmail1">Departement</label>
+	<input ngModel name="department" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter department">
   </div>
-  <div class="text-center">
+  <div class="form-group">
+  <label for="exampleInputEmail1">Year Of Study</label>
+	<input ngModel name="year_of_study" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter year of study">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1">Campus</label>
+	<input ngModel name="campus" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter campus">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1">Section</label>
+	<input ngModel name="section" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter section">
+  </div>
+  <!-- <div class="form-group">
+	<label for="exampleInputPassword1">Password</label>
+	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div> -->
+  <div class="text-center" style="margin-top: 30px;">
 	<button type="submit" class="btn btn-primary">Add</button>
+  </div>
+</form>
+
+<span class="modal-basic-title"></span>
+
+
+<form (ngSubmit)="updateStudent(updateStudentForm)" #updateStudentForm=ngForm id="updateStudentForm" *ngIf="isUpdateStudentForm">
+  <div class="form-group">
+	<label for="exampleInputEmail1">Student ID</label>
+	<input ngModel name="student_id" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder={{student.student_id}}>
+  </div>
+  <div class="form-group">
+	<label for="exampleInputEmail1">Name</label>
+	<input ngModel name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder={{student.name}}>
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1">Departement</label>
+	<input ngModel name="department" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder={{student.department}}>
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1">Year Of Study</label>
+	<input ngModel name="year_of_study" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder={{student.year_of_study}}>
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1">Campus</label>
+	<input ngModel name="campus" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder={{student.campus}}>
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1">Section</label>
+	<input ngModel name="section" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder={{student.section}}>
+  </div>
+  <!-- <div class="form-group">
+  <label for="exampleInputPassword1">Password</label>
+  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div> -->
+  <div class="text-center" style="margin-top: 30px;">
+  <button type="submit" class="btn btn-primary">Update</button>
   </div>
 </form>

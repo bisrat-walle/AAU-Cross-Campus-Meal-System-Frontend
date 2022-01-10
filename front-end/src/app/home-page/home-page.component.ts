@@ -13,10 +13,12 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     document.querySelector('.title__main')?.classList.add('getStarted');
+	document.querySelector('.cont-home')?.classList.add('cont-home-style');
   }
 	
   ngOnDestroy(): void {
     document.querySelector('.title__main')?.classList.remove('getStarted');
+	document.querySelector('.cont-home')?.classList.remove('cont-home-style');
   }
   
 }

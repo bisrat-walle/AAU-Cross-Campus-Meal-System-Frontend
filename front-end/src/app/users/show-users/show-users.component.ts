@@ -70,18 +70,13 @@ export class ShowUsersComponent implements OnInit {
   }
 	
   deleteUser(user:any){
-    let val =     {
-        "id": user.id,
-        "name": user.name,
-        "username": user.username
-    }
-    if (confirm("Are you sure you want to delete this user?")){
-      console.log("Trying to delete the user");
-      this.service.deleteUser(val).subscribe(data => {
-        alert(data.toString());
-        this.refreshUserList();
-      });     
-    }
+	if (confirm("Are you sure you want to delete?")){
+	  this.service.deleteUser(user.id).subscribe(res => {
+      alert(res.toString());
+	  this.refreshUserList();
+    });
+	}
+
   }
 	
 }
