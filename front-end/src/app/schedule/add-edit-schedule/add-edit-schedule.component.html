@@ -1,25 +1,87 @@
-<form>
+<form (ngSubmit)="addSchedule(addScheduleForm)" #addScheduleForm=ngForm id="addScheduleForm" *ngIf="!isUpdateScheduleForm">
   <div class="form-group">
-	<label for="exampleInputEmail1">Department</label>
-	<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Department">
-  </div>
-  <div class="form-group">
-	<label for="exampleInputEmail1">Section</label>
-	<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Section">
+	<label for="exampleInputEmail1">Student ID</label>
+	<input ngModel name="schedule_id" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter schedule id">
   </div>
   <div class="form-group">
-	<label for="exampleInputPassword1">Campus</label>
-	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Campus">
-  </div>
-   <div class="form-group">
-	<label for="exampleInputPassword1">Day</label>
-	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Day">
+	<label for="exampleInputEmail1">Departement</label>
+	<input ngModel name="department" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter department">
   </div>
   <div class="form-group">
-	<label for="exampleInputPassword1">Time</label>
-	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Time">
+  <label for="exampleInputEmail1">Batch</label>
+	<input ngModel name="batch" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter batch">
   </div>
-  <div class="text-center">
+  
+  <div class="form-group">
+  <label for="exampleInputEmail1">Campus</label>
+	<input ngModel name="campus" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter campus">
+  </div>
+  
+  <div class="form-group">
+  <label for="exampleInputEmail1">Section</label>
+	<input ngModel name="section" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter section">
+  </div>
+  
+  <div class="form-group">
+  <label for="exampleInputEmail1">Time</label>
+	<input ngModel name="time" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter time">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1">DAY</label>
+	<input ngModel name="DAY" type="datetime" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter time">
+  </div>
+
+
+  <!-- <div class="form-group">
+	<label for="exampleInputPassword1">Password</label>
+	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div> -->
+  <div class="text-center" style="margin-top: 30px;">
 	<button type="submit" class="btn btn-primary">Add</button>
   </div>
 </form>
+
+<span class="modal-basic-title"></span>
+
+
+<form (ngSubmit)="updateSchedule(updateScheduleForm)" #updateScheduleForm=ngForm id="updateScheduleForm" *ngIf="isUpdateScheduleForm">
+  <div class="form-group">
+	<label for="exampleInputEmail1">Student ID</label>
+	<input ngModel={{schedule.schedule_id}} name="schedule_id" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter schedule id">
+  </div>
+  <div class="form-group">
+	<label for="exampleInputEmail1">Departement</label>
+	<input ngModel={{schedule.department}} name="department" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter department">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1">Batch</label>
+	<input ngModel={{schedule.batch}} name="batch" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter batch">
+  </div>
+  
+  <div class="form-group">
+  <label for="exampleInputEmail1">Campus</label>
+	<input ngModel={{schedule.campus}} name="campus" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter campus">
+  </div>
+  
+  <div class="form-group">
+  <label for="exampleInputEmail1">Section</label>
+	<input ngModel={{schedule.section}} name="section" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter section">
+  </div>
+  
+  <div class="form-group">
+  <label for="exampleInputEmail1">Time</label>
+	<input ngModel={{schedule.time}} name="time" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter time">
+  </div>
+  <div class="form-group">
+  <label for="exampleInputEmail1">DAY</label>
+	<input ngModel={{schedule.DAY}} name="DAY" type="datetime" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter time">
+  </div>
+  <!-- <div class="form-group">
+  <label for="exampleInputPassword1">Password</label>
+  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div> -->
+  <div class="text-center" style="margin-top: 30px;">
+  <button type="submit" class="btn btn-primary">Update</button>
+  </div>
+</form>
+

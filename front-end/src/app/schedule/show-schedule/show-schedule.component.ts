@@ -10,29 +10,53 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class ShowScheduleComponent implements OnInit {
 
+  static schedule: any;
+
+  constructor(private service:SharedService, private modalService: NgbModal) { }
+
   scheduleList:any=[];
-  modalTitle: string="";
-  activateAddEditUserComp:boolean=false;
-  user:any;
-  closeResult:any;
-
-  constructor(private service: SharedService, private modalService:NgbModal) { }
-
-  ngOnInit(): void {
-	this.refreshScheduleList()
-  }
   
+  modalTitle: string="";
+  btnText:string="";
+  closeResult:any;
+  scheduleIdFilter:string="";
+  scheduleNameFilter:string="";
+  scheduleListWithoutFilter:any=[];
+  
+  ngOnInit(): void {
+    this.refreshScheduleList();
+  }
+
   refreshScheduleList(){
     this.service.getScheduleList().subscribe(data =>{
       this.scheduleList = data;
+      this.scheduleListWithoutFilter = data;
     })
   }
 
-  open(content:any) {
+  filterSchedule(){
+    var scheduleIdFilter = this.scheduleIdFilter
+    this.scheduleList = this.scheduleListWithoutFilter.filter( (e:any) => {
+      return e.schedule_id.toString().trim().toLowerCase().includes(this.scheduleIdFilter);
+    })
+  }
+
+
+
+  
+  open(content:any, modalTitle:string, btnText:string, schedule1:any=null) {
+    if (schedule1 != null){
+      ShowScheduleComponent.schedule = schedule1;
+	  console.log("schedule1"+schedule1.schedule_id);
+    }
+    this.modalTitle = modalTitle;
+    this.btnText = btnText;
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
+      this.refreshScheduleList();
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      this.refreshScheduleList()
     });
   }
   
@@ -44,6 +68,16 @@ export class ShowScheduleComponent implements OnInit {
     } else {
       return  `with: ${reason}`;
     }
+  }
+	
+  deleteSchedule(schedule:any){
+	if (confirm("Are you sure you want to delete?")){
+	  this.service.deleteSchedule(schedule.schedule_id).subscribe(res => {
+      alert(res.toString());
+	  this.refreshScheduleList();
+    });
+	}
+
   }
 
 }

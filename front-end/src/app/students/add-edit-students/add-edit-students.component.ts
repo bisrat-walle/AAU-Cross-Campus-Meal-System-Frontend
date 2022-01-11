@@ -42,12 +42,12 @@ export class AddEditStudentsComponent implements OnInit {
   updateStudent(form: NgForm){
     let di = form.value;
     let val = {
-                "student_id":(di.student_id=='')?ShowStudentsComponent.student.student_id:di.student_id, 
-                "name":(di.name=='')?ShowStudentsComponent.student.name:di.name, 
-                "department":(di.department=='')?ShowStudentsComponent.student.department:di.department, 
-				"year_of_study":parseInt((di.year_of_study == '')?ShowStudentsComponent.student.year_of_study:di.year_of_study), 
-				"campus":(di.campus == '')?ShowStudentsComponent.student.campus:di.campus, 
-				"section":parseInt((di.section == '')?ShowStudentsComponent.student.section:di.section)
+                "student_id":di.student_id, 
+                "name":di.name,
+                "department":di.department, 
+				"year_of_study":parseInt(di.year_of_study),
+				"campus":di.campus, 
+				"section":parseInt(di.section)
               };
     this.service.updateStudent(val).subscribe(res => {
       alert(res.toString());
