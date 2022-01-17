@@ -61,5 +61,21 @@ export class SharedService {
   deleteSchedule(val:any){
     return this.http.delete(this.APIUrl + '/schedule/' + val);
   }
-
+  
+  login(val:any){
+	return this.http.post(this.APIUrl + '/login/', val);
+  }
+  
+  loggedIn(){
+	return !!localStorage.getItem('token');
+  }
+  
+  getToken(){
+	return localStorage.getItem('token');
+  }
+	
+	
+  logout(val:any){
+	return this.http.post(this.APIUrl + '/logout/', val);
+  }
 }

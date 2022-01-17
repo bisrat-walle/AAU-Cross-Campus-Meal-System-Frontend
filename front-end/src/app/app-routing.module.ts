@@ -7,10 +7,11 @@ import { ScheduleComponent } from './schedule/schedule.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
 import { VerifyFailedComponent } from './scanner/verify-failed/verify-failed.component';
+import { AdminGuardGuard } from './admin-guard.guard';
 
 const routes: Routes = [
-  {path:'student', component: StudentsComponent},
-  {path:'user', component: UsersComponent},
+  {path:'student', component: StudentsComponent, canActivate:[AdminGuardGuard]},
+  {path:'user', component: UsersComponent, canActivate:[AdminGuardGuard]},
   {path:'scanner', component: ScannerComponent, 
    children: [
     {path:'', redirectTo:"login", pathMatch:"full"},
@@ -19,7 +20,7 @@ const routes: Routes = [
    ]
   },
 
-  {path:'schedule', component: ScheduleComponent},
+  {path:'schedule', component: ScheduleComponent, canActivate:[AdminGuardGuard]},
   {path:'', component: HomePageComponent},
   {path:'login', component: LoginComponent}
 ];

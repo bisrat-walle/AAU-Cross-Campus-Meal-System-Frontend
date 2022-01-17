@@ -13,7 +13,7 @@ import { ShowStudentsComponent } from './students/show-students/show-students.co
 import { AddEditStudentsComponent } from './students/add-edit-students/add-edit-students.component';
 import { SharedService } from './shared.service';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
@@ -22,6 +22,8 @@ import { AddEditScheduleComponent } from './schedule/add-edit-schedule/add-edit-
 import { ShowScheduleComponent } from './schedule/show-schedule/show-schedule.component';
 import { VerifySucessComponent } from './scanner/verify-sucess/verify-sucess.component';
 import { VerifyFailedComponent } from './scanner/verify-failed/verify-failed.component';
+import { AdminGuardGuard } from './admin-guard.guard';
+import { TokenInterceptorService } from './token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,13 @@ import { VerifyFailedComponent } from './scanner/verify-failed/verify-failed.com
     ReactiveFormsModule,
 	NgbModule
   ],
-  providers: [SharedService],
+  providers: [SharedService, AdminGuardGuard, 
+	{
+		provide: HTTP_INTERCEPTORS,
+		useClass: TokenInterceptorService,
+		multi: true
+	}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
