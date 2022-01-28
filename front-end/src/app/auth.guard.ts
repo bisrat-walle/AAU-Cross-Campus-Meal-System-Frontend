@@ -5,16 +5,11 @@ import { SharedService } from './shared.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuardGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
+
   constructor(private service:SharedService, private router:Router){}
-  role:any;
   canActivate():boolean{
-    
-    this.service.getUserRole().subscribe(
-	(data:any) =>{
-		this.role = data['role'];
-	});
-	if ( this.role == "ADMIN"){
+	if (this.service.loggedIn()){
 		return true;
 	}
 	this.router.navigate(['/scan']);

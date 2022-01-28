@@ -63,7 +63,11 @@ export class SharedService {
   }
   
   login(val:any){
-	return this.http.post(this.APIUrl + '/login/', val);
+	return this.http.post(this.APIUrl + 'api/login/', val);
+  }
+  
+  getUserRole(){
+	return this.http.get(this.APIUrl + 'profile/');
   }
   
   loggedIn(){

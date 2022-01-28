@@ -23,6 +23,7 @@ import { ShowScheduleComponent } from './schedule/show-schedule/show-schedule.co
 import { VerifySucessComponent } from './scanner/verify-sucess/verify-sucess.component';
 import { VerifyFailedComponent } from './scanner/verify-failed/verify-failed.component';
 import { AdminGuardGuard } from './admin-guard.guard';
+import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './token-interceptor.service';
 
 @NgModule({
@@ -51,7 +52,7 @@ import { TokenInterceptorService } from './token-interceptor.service';
     ReactiveFormsModule,
 	NgbModule
   ],
-  providers: [SharedService, AdminGuardGuard, 
+  providers: [SharedService, AdminGuardGuard, AuthGuard,
 	{
 		provide: HTTP_INTERCEPTORS,
 		useClass: TokenInterceptorService,

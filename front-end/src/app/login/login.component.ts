@@ -47,9 +47,16 @@ export class LoginComponent implements OnInit {
   login(form: NgForm){
     let di = form.value;
     let val = {"username":di.username, "password":di.password};
-    this.service.addUser(val).subscribe(res => {
-      alert(res.toString());
-    });
+    this.service.login(val).subscribe(
+		(res:any) => {
+		  if (res['access']) {
+            localStorage.setItem('token', res['access']); //token here is stored in a local storage
+          }
+		},
+		(err) => {
+			console.log(err);
+		}
+	);
   }
 
 }
