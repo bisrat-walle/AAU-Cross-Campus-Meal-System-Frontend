@@ -7,7 +7,7 @@
 
 <div *ngIf="isScannerPage()" class="text-center" style="margin-top:50px">
 	<p class="text-info">Click the button below to scan ID</p>
-	<button routerLink="verified" type="button" class="btn btn-lg btn-outline-primary">Scan</button>
+	<button routerLink="verified" (onclick)="scanId()" type="button" class="btn btn-lg btn-outline-primary">Scan</button>
 </div>
 
 <app-verify-sucess *ngIf="isScannerSuccessPage()"></app-verify-sucess>

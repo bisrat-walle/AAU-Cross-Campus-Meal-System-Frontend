@@ -82,4 +82,8 @@ export class SharedService {
   logout(val:any){
 	return this.http.post(this.APIUrl + '/logout/', val);
   }
+  
+  scan():any{
+	return this.http.delete(this.APIUrl + '/sccan/');
+  }
 }
