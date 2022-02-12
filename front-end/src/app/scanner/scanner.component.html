@@ -1,13 +1,13 @@
 <nav class="admin-nav navbar navbar-expand-sm bg-light navbar-dark">
   <h4>Scan Student ID</h4>
-  <button routerLink="" type="button" class="btn btn-secondary btn-sm">Logout</button>
+  <button (click)="logout()" type="button" class="btn btn-secondary btn-sm">Logout</button>
 </nav>
 
 <div style="margin-bottom:50px;"></div>
 
 <div *ngIf="isScannerPage()" class="text-center" style="margin-top:50px">
 	<p class="text-info">Click the button below to scan ID</p>
-	<button routerLink="verified" (onclick)="scanId()" type="button" class="btn btn-lg btn-outline-primary">Scan</button>
+	<button (click)="scanId()" type="button" class="btn btn-lg btn-outline-primary">Scan</button>
 </div>
 
 <app-verify-sucess *ngIf="isScannerSuccessPage()"></app-verify-sucess>

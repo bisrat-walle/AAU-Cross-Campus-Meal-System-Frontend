@@ -18,6 +18,7 @@ export class AddEditStudentsComponent implements OnInit {
   id: any;
   username: any;
   isUpdateStudentForm: boolean = false;
+  month = null;
 
   ngOnInit(): void {
     let el = document.getElementsByClassName("modal-basic-title");
@@ -31,26 +32,24 @@ export class AddEditStudentsComponent implements OnInit {
     
   }
 
+  closeModal():void{
+    document.getElementById("closeModal")?.click();
+  }
+
   addStudent(form: NgForm){
     let di = form.value;
-    let val = {"student_id":di.student_id, "name":di.name, "department":di.department, "year_of_study":di.year_of_study, "campus":di.campus, "section":di.section};
-    this.service.addStudent(val).subscribe(res => {
+    console.log(di)
+    this.service.addStudent(di).subscribe(res => {
       alert(res.toString());
+      this.closeModal();
     });
   }
 
   updateStudent(form: NgForm){
     let di = form.value;
-    let val = {
-                "student_id":di.student_id, 
-                "name":di.name,
-                "department":di.department, 
-				"year_of_study":parseInt(di.year_of_study),
-				"campus":di.campus, 
-				"section":parseInt(di.section)
-              };
-    this.service.updateStudent(val).subscribe(res => {
+    this.service.updateStudent(di).subscribe(res => {
       alert(res.toString());
+      this.closeModal();
     }); 
   }
 

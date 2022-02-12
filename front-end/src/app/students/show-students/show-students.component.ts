@@ -21,6 +21,7 @@ export class ShowStudentsComponent implements OnInit {
   studentIdFilter:string="";
   studentNameFilter:string="";
   studentListWithoutFilter:any=[];
+  modal:any;
   
   ngOnInit(): void {
     this.refreshStudentList();
@@ -49,7 +50,7 @@ export class ShowStudentsComponent implements OnInit {
     }
     this.modalTitle = modalTitle;
     this.btnText = btnText;
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modal = this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
       this.refreshStudentList();
     }, (reason) => {
@@ -72,6 +73,7 @@ export class ShowStudentsComponent implements OnInit {
 	if (confirm("Are you sure you want to delete?")){
 	  this.service.deleteStudent(student.student_id).subscribe(res => {
       alert(res.toString());
+	  this.modal.close();
 	  this.refreshStudentList();
     });
 	}

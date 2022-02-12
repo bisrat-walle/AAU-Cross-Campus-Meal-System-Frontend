@@ -1,7 +1,7 @@
 <ng-template #mymodal let-modal>
   <div class="modal-header">
     <h4 class="modal-title d-flex justify-content-center" class="modal-basic-title">{{modalTitle}}</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <button id="closeModal" type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">×</span>
     </button>
   </div>
@@ -45,7 +45,8 @@
     </tbody>
   </table>
   
-  <h6 *ngIf="userNameFilter != '' && userList.length==0" style="width:100%;text-align:center">No match found!</h6>
+  <h6 *ngIf="userNameFilter != '' && userList.length==0" style="width:100%;text-align:center;margin-top: 20px;">No match found!</h6>
+  <h6 *ngIf="userNameFilter == '' && userList.length==0" style="width:100%;text-align:center;margin-top: 20px;">No user found on the system!</h6>
 
   <!-- Button trigger modal -->
 <div class="add-button text-center" style="margin-top: 20px;">

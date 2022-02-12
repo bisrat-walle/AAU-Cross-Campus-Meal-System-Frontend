@@ -30,23 +30,25 @@ export class AddEditUsersComponent implements OnInit {
     
   }
 
+  closeModal():void{
+    document.getElementById("closeModal")?.click();
+  }
+
   addUser(form: NgForm){
+    
     let di = form.value;
-    let val = {"id":di.id, "name":di.name, "username":di.username};
-    this.service.addUser(val).subscribe(res => {
+    this.service.addUser(di).subscribe(res => {
       alert(res.toString());
+      this.closeModal();
     });
   }
 
   updateUser(form: NgForm){
     let di = form.value;
-    let val = {
-                "id":parseInt((di.id=='')?ShowUsersComponent.user.id:di.id), 
-                "name":(di.name=='')?ShowUsersComponent.user.name:di.name, 
-                "username":(di.username=='')?ShowUsersComponent.user.username:di.username
-              };
-    this.service.updateUser(val).subscribe(res => {
+    console.log(di);
+    this.service.updateUser(di).subscribe(res => {
       alert(res.toString());
+      this.closeModal();
     }); 
   }
 

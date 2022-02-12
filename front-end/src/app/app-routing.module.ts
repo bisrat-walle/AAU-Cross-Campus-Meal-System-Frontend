@@ -15,10 +15,11 @@ const routes: Routes = [
   {path:'user', component: UsersComponent, canActivate:[AuthGuard, AdminGuardGuard]},
   {path:'scanner', component: ScannerComponent, 
    children: [
-    {path:'', redirectTo:"login", pathMatch:"full", canActivate:[AuthGuard]},
-    {path:'failed',component:ScannerComponent, canActivate:[AuthGuard]},
-	{path:'verified',component:ScannerComponent, canActivate:[AuthGuard]}
-   ]
+    {path:'', redirectTo:"login", pathMatch:"full"},
+    {path:'failed',component:ScannerComponent},
+	{path:'verified',component:ScannerComponent}
+   ],
+   canActivate:[AuthGuard]
   },
 
   {path:'schedule', component: ScheduleComponent, canActivate:[AuthGuard, AdminGuardGuard]},

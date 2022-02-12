@@ -26,13 +26,26 @@ export class ScannerComponent implements OnInit {
 	return this.router.url == "/scanner/verified";
   }
   
-  scanId():any{
-	let result = this.service.scan()
-	if (result.status == true){
-		this.router.navigateByUrl("/scanner/verified");
-		return;
-	}
-	this.router.navigateByUrl("/scanner/failed");
+  scanId():void{
+  console.log("entered")
+  let result;
+	this.service.scan().subscribe(
+    (data:any) => {
+      console.log(data);
+      result = data;
+      if (data.status == false){
+        this.router.navigateByUrl("/scanner/failed");
+        return
+      }
+      this.router.navigateByUrl("/scanner/verified");
+    }
+  )
+
+  }
+
+  logout():void{
+    this.service.logout();
+    this.router.navigateByUrl("/");
   }
 
 }

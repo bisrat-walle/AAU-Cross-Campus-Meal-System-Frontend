@@ -8,16 +8,41 @@
 	<input ngModel name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
   </div>
   <div class="form-group">
-  <label for="exampleInputEmail1">Departement</label>
-	<input ngModel name="department" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter department">
+  <label for="department">Departement</label>
+	<select ngModel name="department" id="department" class="form-control">
+    <option value="software engineer">Software Engineering</option>
+    <option value="electrical Engineer">Electrical Engineering</option>
+    <option value="mechanical Engineer">Mechanical Engineering</option>
+    <option value="biomedical Engineer">Biomedical Engineering</option>
+    <option value="civil Engineer">Civil Engineering</option>
+    <option value="chemical Engineer">Chemical Engineering</option>
+  </select>
   </div>
+
+
+
   <div class="form-group">
-  <label for="exampleInputEmail1">Year Of Study</label>
-	<input ngModel name="year_of_study" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter year of study">
+  <label for="bach">Year Of Study</label>
+	<select ngModel name="bach" id="bach" class="form-control">
+    <option [ngValue]="null" [disabled]="true" >Enter year</option>
+    <option value="1">First</option>
+    <option value="2">Second</option>
+    <option value="3">Third</option>
+    <option value="4">Fourth</option>
+    <option value="5">Fifth</option>
+  </select>
+
   </div>
+
   <div class="form-group">
-  <label for="exampleInputEmail1">Campus</label>
-	<input ngModel name="campus" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter campus">
+  <label for="campus">Campus</label>
+  <select ngModel name="campus" id="campus" class="form-control">
+    <option [ngValue]="null" [disabled]="true" >Enter campus</option>
+    <option value="4killo">4 kilo</option>
+    <option value="5killo">5 kilo</option>
+    <option value="6killo">6 kilo</option>
+  </select>
+
   </div>
   <div class="form-group">
   <label for="exampleInputEmail1">Section</label>
@@ -45,17 +70,38 @@
 	<input ngModel={{student.name}} name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter student name">
   </div>
   <div class="form-group">
-  <label for="exampleInputEmail1">Departement</label>
-	<input ngModel={{student.department}} name="department" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter department">
-  </div>
-  <div class="form-group">
-  <label for="exampleInputEmail1">Year Of Study</label>
-	<input ngModel={{student.year_of_study}} name="year_of_study" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter year of study">
-  </div>
-  <div class="form-group">
-  <label for="exampleInputEmail1">Campus</label>
-	<input ngModel={{student.campus}} name="campus" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter Campus">
-  </div>
+    <label for="department">Departement</label>
+    <select ngModel={{student.department}} name="department" id="department" class="form-control">
+      <option value="software engineer">Software Engineering</option>
+      <option value="electrical Engineer">Electrical Engineering</option>
+      <option value="mechanical Engineer">Mechanical Engineering</option>
+      <option value="biomedical Engineer">Biomedical Engineering</option>
+      <option value="civil Engineer">Civil Engineering</option>
+      <option value="chemical Engineer">Chemical Engineering</option>
+    </select>
+    </div>
+    <div class="form-group">
+      <label for="bach">Year Of Study</label>
+      <select ngModel={{student.bach}} name="bach" id="bach" class="form-control">
+        <option [ngValue]="null" [disabled]="true" >Enter year</option>
+        <option value="1">First</option>
+        <option value="2">Second</option>
+        <option value="3">Third</option>
+        <option value="4">Fourth</option>
+        <option value="5">Fifth</option>
+      </select>
+    
+      </div>
+      <div class="form-group">
+        <label for="campus">Campus</label>
+        <select ngModel={{student.campus}} name="campus" id="campus" class="form-control">
+          <option [ngValue]="null" [disabled]="true" >Enter campus</option>
+          <option value="4killo">4 kilo</option>
+          <option value="5killo">5 kilo</option>
+          <option value="6killo">6 kilo</option>
+        </select>
+      
+        </div>
   <div class="form-group">
   <label for="exampleInputEmail1">Section</label>
 	<input ngModel={{student.section}} name="section" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter Section">

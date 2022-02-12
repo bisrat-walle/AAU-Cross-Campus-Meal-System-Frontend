@@ -7,17 +7,14 @@ import { SharedService } from './shared.service';
 })
 export class AdminGuardGuard implements CanActivate {
   constructor(private service:SharedService, private router:Router){}
-  role:any;
+
   canActivate():boolean{
     
-    this.service.getUserRole().subscribe(
-	(data:any) =>{
-		this.role = data['role'];
-	});
-	if ( this.role == "ADMIN"){
+    let role = localStorage.getItem("role");
+	if ( role == "admin"){
 		return true;
 	}
-	this.router.navigate(['/scan']);
+	this.router.navigate(['/scanner']);
 	return false;
   }
   

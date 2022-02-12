@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SharedService {
-  readonly APIUrl  = 'http://127.0.0.1:8000';
+  readonly APIUrl  = 'http://localhost:8000';
 
   constructor(private http:HttpClient) { }
 
@@ -63,11 +63,11 @@ export class SharedService {
   }
   
   login(val:any){
-	return this.http.post(this.APIUrl + 'api/login/', val);
+	return this.http.post(this.APIUrl + '/api/login/', val);
   }
   
-  getUserRole(){
-	return this.http.get(this.APIUrl + 'profile/');
+  getUserProfile(){
+	  return this.http.get(this.APIUrl + '/profile/');
   }
   
   loggedIn(){
@@ -79,11 +79,12 @@ export class SharedService {
   }
 	
 	
-  logout(val:any){
-	return this.http.post(this.APIUrl + '/logout/', val);
+  logout(){
+	 localStorage.removeItem("token");
+   localStorage.removeItem("role");
   }
   
-  scan():any{
-	return this.http.delete(this.APIUrl + '/sccan/');
+  scan(val:any=null):Observable<any>{
+    return this.http.post(this.APIUrl + '/scan/', val);
   }
 }

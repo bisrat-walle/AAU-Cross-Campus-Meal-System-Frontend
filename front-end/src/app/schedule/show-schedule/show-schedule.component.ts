@@ -35,9 +35,13 @@ export class ShowScheduleComponent implements OnInit {
   }
 
   filterSchedule(){
-    var scheduleIdFilter = this.scheduleIdFilter
     this.scheduleList = this.scheduleListWithoutFilter.filter( (e:any) => {
-      return e.schedule_id.toString().trim().toLowerCase().includes(this.scheduleIdFilter);
+      return e.schedule_id.toString().trim().toLowerCase().includes(this.scheduleIdFilter) ||
+             e.campus.toString().trim().toLowerCase().includes(this.scheduleIdFilter) ||
+             e.department.toString().trim().toLowerCase().includes(this.scheduleIdFilter) ||
+             e.bach.toString.toString().trim().toLowerCase().includes(this.scheduleIdFilter) ||
+             e.section.toString.toString().trim().toLowerCase().includes(this.scheduleIdFilter) ||
+             e.day.toString.toString().trim().toLowerCase().includes(this.scheduleIdFilter);
     })
   }
 

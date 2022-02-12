@@ -20,8 +20,10 @@ export class AddEditScheduleComponent implements OnInit {
   isUpdateScheduleForm: boolean = false;
 
   ngOnInit(): void {
+    console.log("Hello World")
     let el = document.getElementsByClassName("modal-basic-title");
 	console.log(el[0].innerHTML)
+  console.log("Hello World")
     if (el[0].innerHTML == "Update Schedule"){
       this.isUpdateScheduleForm = true;
       this.schedule = ShowScheduleComponent.schedule;
@@ -32,29 +34,23 @@ export class AddEditScheduleComponent implements OnInit {
     
   }
 
+  closeModal():void{
+    document.getElementById("closeModal")?.click();
+  }
+
   addSchedule(form: NgForm){
     let di = form.value;
-    let val = {"schedule_id":di.schedule_id, "department":di.department, "batch":di.batch, 
-				"campus":di.campus,
-				"section":di.section, "time":di.time, "DAY":di.DAY};
-    this.service.addSchedule(val).subscribe(res => {
+    this.service.addSchedule(di).subscribe(res => {
       alert(res.toString());
+      this.closeModal();
     });
   }
 
   updateSchedule(form: NgForm){
     let di = form.value;
-    let val = {
-                "schedule_id":di.schedule_id, 
-                "department":di.department, 
-				"batch":parseInt(di.batch), 
-				"campus":di.campus, 
-				"section":parseInt(di.section), 
-				"time":di.time, 
-				"DAY":di.DAY
-              };
-    this.service.updateSchedule(val).subscribe(res => {
+    this.service.updateSchedule(di).subscribe(res => {
       alert(res.toString());
+      this.closeModal();
     }); 
   }
 

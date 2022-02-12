@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { NgForm } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,9 +10,12 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private service:SharedService) { }
+  constructor(private service:SharedService, private router:Router, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.error();
+
     let userBtn = document.getElementById("pills-login-as-user-button");
     let adminBtn = document.getElementById("pills-login-as-admin-button");
     let userLoginContent = document.getElementById("pills-login-as-user");
@@ -43,19 +47,40 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+
+  error():boolean{
+    return this.activatedRoute.snapshot.queryParams["error"] !== undefined;
+  }
   
-  login(form: NgForm){
+  login(form: NgForm, loginAs:string){
     let di = form.value;
-    let val = {"username":di.username, "password":di.password};
-    this.service.login(val).subscribe(
+    this.service.login(di).subscribe(
 		(res:any) => {
 		  if (res['access']) {
             localStorage.setItem('token', res['access']); //token here is stored in a local storage
           }
+
+          this.service.getUserProfile().subscribe(
+            (data:any) => {
+              let role=data["role"];
+              if (role != loginAs){
+                this.service.logout();
+                this.router.navigateByUrl("/login?error=error")
+                return
+              }
+              localStorage.setItem("role", role)
+              if (data["role"] == "admin"){
+                this.router.navigateByUrl("/user")
+                return
+              }
+              this.router.navigateByUrl("/scanner")
+            }
+          )
 		},
-		(err) => {
-			console.log(err);
-		}
+    
+    (err:any) => {
+      this.router.navigateByUrl("/login?error=error")
+    }
 	);
   }
 

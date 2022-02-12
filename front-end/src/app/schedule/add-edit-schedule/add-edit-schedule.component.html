@@ -1,87 +1,150 @@
 <form (ngSubmit)="addSchedule(addScheduleForm)" #addScheduleForm=ngForm id="addScheduleForm" *ngIf="!isUpdateScheduleForm">
   <div class="form-group">
-	<label for="exampleInputEmail1">Student ID</label>
-	<input ngModel name="schedule_id" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter schedule id">
-  </div>
-  <div class="form-group">
-	<label for="exampleInputEmail1">Departement</label>
-	<input ngModel name="department" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter department">
-  </div>
-  <div class="form-group">
-  <label for="exampleInputEmail1">Batch</label>
-	<input ngModel name="batch" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter batch">
-  </div>
+    <label for="campus">Campus</label>
+    <select ngModel name="campus" id="campus" class="form-control">
+      <option [ngValue]="null" [disabled]="true" >Enter campus</option>
+      <option value="4killo">4 kilo</option>
+      <option value="5killo">5 kilo</option>
+      <option value="6killo">6 kilo</option>
+    </select>
   
-  <div class="form-group">
-  <label for="exampleInputEmail1">Campus</label>
-	<input ngModel name="campus" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter campus">
-  </div>
-  
-  <div class="form-group">
-  <label for="exampleInputEmail1">Section</label>
-	<input ngModel name="section" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter section">
-  </div>
-  
-  <div class="form-group">
-  <label for="exampleInputEmail1">Time</label>
-	<input ngModel name="time" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter time">
-  </div>
-  <div class="form-group">
-  <label for="exampleInputEmail1">DAY</label>
-	<input ngModel name="DAY" type="datetime" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter time">
-  </div>
+    </div>
+
+    <div class="form-group">
+      <label for="department">Departement</label>
+      <select ngModel name="department" id="department" class="form-control">
+        <option value="software engineer">Software Engineering</option>
+        <option value="electrical Engineer">Electrical Engineering</option>
+        <option value="mechanical Engineer">Mechanical Engineering</option>
+        <option value="biomedical Engineer">Biomedical Engineering</option>
+        <option value="civil Engineer">Civil Engineering</option>
+        <option value="chemical Engineer">Chemical Engineering</option>
+      </select>
+      </div>
 
 
-  <!-- <div class="form-group">
-	<label for="exampleInputPassword1">Password</label>
-	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div> -->
-  <div class="text-center" style="margin-top: 30px;">
-	<button type="submit" class="btn btn-primary">Add</button>
-  </div>
+      <div class="form-group">
+        <label for="bach">Year Of Study</label>
+        <select ngModel name="bach" id="bach" class="form-control">
+          <option [ngValue]="null" [disabled]="true" >Enter year</option>
+          <option value="1">First</option>
+          <option value="2">Second</option>
+          <option value="3">Third</option>
+          <option value="4">Fourth</option>
+          <option value="5">Fifth</option>
+        </select>
+      
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Section</label>
+          <input ngModel name="section" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter section">
+          </div>
+  
+  <div class="form-group">
+    <label for="exampleInputEmail1">DAY</label>
+    <select ngModel name="day" id="bach" class="form-control">
+      <option [ngValue]="null" [disabled]="true" >Enter DAY</option>
+      <option value="monday">Monday</option>
+      <option value="tuesday">Tuesday</option>
+      <option value="wednesday">Wednesday</option>
+      <option value="thursday">Thursday</option>
+      <option value="friday">Friday</option>
+    </select>
+    </div>
+    <div class="form-group">
+    <label for="exampleInputEmail1">Start Time</label>
+    <input ngModel name="startTime" type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">End Time</label>
+      <input ngModel name="endTime" type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+      </div>
+
+    
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Schedule ID</label>
+      <input ngModel name="schedule_id" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter student id">
+      </div>
+    <div class="text-center" style="margin-top: 30px;">
+    <button type="submit" class="btn btn-primary">Add</button>
+    </div>
 </form>
 
-<span class="modal-basic-title"></span>
+<form (ngSubmit)="updateSchedule(updateScheduleForm)" #updateScheduleForm=ngForm id="addScheduleForm" *ngIf="isUpdateScheduleForm">
+  <div class="form-group">
+    <label for="campus">Campus</label>
+    <select ngModel={{schedule.campus}} name="campus" id="campus" class="form-control">
+      <option [ngValue]="null" [disabled]="true" >Enter campus</option>
+      <option value="4killo">4 kilo</option>
+      <option value="5killo">5 kilo</option>
+      <option value="6killo">6 kilo</option>
+    </select>
+  
+    </div>
+
+    <div class="form-group">
+      <label for="department">Departement</label>
+      <select ngModel={{schedule.department}} name="department" id="department" class="form-control">
+        <option value="software engineer">Software Engineering</option>
+        <option value="electrical Engineer">Electrical Engineering</option>
+        <option value="mechanical Engineer">Mechanical Engineering</option>
+        <option value="biomedical Engineer">Biomedical Engineering</option>
+        <option value="civil Engineer">Civil Engineering</option>
+        <option value="chemical Engineer">Chemical Engineering</option>
+      </select>
+      </div>
 
 
-<form (ngSubmit)="updateSchedule(updateScheduleForm)" #updateScheduleForm=ngForm id="updateScheduleForm" *ngIf="isUpdateScheduleForm">
-  <div class="form-group">
-	<label for="exampleInputEmail1">Student ID</label>
-	<input ngModel={{schedule.schedule_id}} name="schedule_id" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter schedule id">
-  </div>
-  <div class="form-group">
-	<label for="exampleInputEmail1">Departement</label>
-	<input ngModel={{schedule.department}} name="department" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter department">
-  </div>
-  <div class="form-group">
-  <label for="exampleInputEmail1">Batch</label>
-	<input ngModel={{schedule.batch}} name="batch" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter batch">
-  </div>
+      <div class="form-group">
+        <label for="bach">Year Of Study</label>
+        <select ngModel={{schedule.bach}} name="bach" id="bach" class="form-control">
+          <option [ngValue]="null" [disabled]="true" >Enter year</option>
+          <option value="1">First</option>
+          <option value="2">Second</option>
+          <option value="3">Third</option>
+          <option value="4">Fourth</option>
+          <option value="5">Fifth</option>
+        </select>
+      
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Section</label>
+          <input ngModel={{schedule.section}} name="section" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter section">
+          </div>
   
   <div class="form-group">
-  <label for="exampleInputEmail1">Campus</label>
-	<input ngModel={{schedule.campus}} name="campus" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter campus">
-  </div>
-  
-  <div class="form-group">
-  <label for="exampleInputEmail1">Section</label>
-	<input ngModel={{schedule.section}} name="section" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter section">
-  </div>
-  
-  <div class="form-group">
-  <label for="exampleInputEmail1">Time</label>
-	<input ngModel={{schedule.time}} name="time" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter time">
-  </div>
-  <div class="form-group">
-  <label for="exampleInputEmail1">DAY</label>
-	<input ngModel={{schedule.DAY}} name="DAY" type="datetime" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter time">
-  </div>
-  <!-- <div class="form-group">
-  <label for="exampleInputPassword1">Password</label>
-  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div> -->
-  <div class="text-center" style="margin-top: 30px;">
-  <button type="submit" class="btn btn-primary">Update</button>
-  </div>
+    <label for="exampleInputEmail1">DAY</label>
+    <select ngModel={{schedule.day}} name="day" id="day" class="form-control">
+      <option [ngValue]="null" [disabled]="true" >Enter DAY</option>
+      <option value="monday">Monday</option>
+      <option value="tuesday">Tuesday</option>
+      <option value="wednesday">Wednesday</option>
+      <option value="thursday">Thursday</option>
+      <option value="friday">Friday</option>
+    </select>
+    </div>
+    <div class="form-group">
+    <label for="exampleInputEmail1">Start Time</label>
+    <input ngModel={{schedule.startTime}} name="startTime" type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">End Time</label>
+      <input ngModel={{schedule.endTime}} name="endTime" type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+      </div>
+
+    
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Schedule ID</label>
+      <input ngModel={{schedule.schedule_id}} name="schedule_id" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter student id">
+      </div>
+    <div class="text-center" style="margin-top: 30px;">
+    <button type="submit" class="btn btn-primary">Update</button>
+    </div>
 </form>
 
