@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-verify-sucess',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerifySucessComponent implements OnInit {
 
-  constructor() { }
+  constructor(private title:Title) { }
 
   ngOnInit(): void {
+	this.title.setTitle("Verify Success");
   }
 
 }

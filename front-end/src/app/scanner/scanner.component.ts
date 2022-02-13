@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SharedService } from 'src/app/shared.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-scanner',
@@ -9,9 +10,10 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class ScannerComponent implements OnInit {
 
-  constructor(private router:Router, private service:SharedService) { }
+  constructor(private router:Router, private service:SharedService, private title:Title) { }
 
   ngOnInit(): void {
+	this.title.setTitle("Scan Id")
   }
   
   isScannerPage():boolean{

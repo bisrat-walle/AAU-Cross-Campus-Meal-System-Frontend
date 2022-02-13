@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +11,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private service:SharedService, private router:Router, private activatedRoute:ActivatedRoute) { }
+  constructor(private service:SharedService, private router:Router, 
+				private activatedRoute:ActivatedRoute,
+				private title:Title) { }
 
   ngOnInit(): void {
+	
+	this.title.setTitle("Login")
 
     this.error();
 
