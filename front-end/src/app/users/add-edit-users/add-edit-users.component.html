@@ -1,14 +1,18 @@
-<form (ngSubmit)="addUser(addUserForm)" #addUserForm=ngForm id="addUserForm" *ngIf="!isUpdateUserForm">
+<form [formGroup]="userAddReactiveForm" (ngSubmit)="addUser(userAddReactiveForm)" id="addUserForm" *ngIf="!isUpdateUserForm">
   <div class="form-group">
 	<label for="exampleInputEmail1">Username</label>
-	<input ngModel name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+	<input formControlName="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+	<small *ngIf="userAddReactiveForm.get('username').invalid && userAddReactiveForm.get('username').touched" class="text-danger l-1">
+	Username is required and must be atleast 5 characters long</small>
   </div>
   <div class="form-group">
 	<label for="exampleInputPassword1">Password</label>
-	<input ngModel name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+	<input formControlName="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+	<small *ngIf="userAddReactiveForm.get('password').invalid && userAddReactiveForm.get('password').touched" class="text-danger l-1">
+	Password is required and must be atleast 4 characters long</small>
   </div>
   <div class="text-center" style="margin-top: 30px;">
-	<button [disabled]="!addUserForm.valid" type="submit" class="btn btn-primary">Add</button>
+	<button [disabled]="userAddReactiveForm.invalid" type="submit" class="btn btn-primary">Add</button>
   </div>
 </form>
 

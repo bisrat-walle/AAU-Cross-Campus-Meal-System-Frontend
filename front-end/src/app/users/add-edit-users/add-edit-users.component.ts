@@ -17,11 +17,17 @@ export class AddEditUsersComponent implements OnInit {
   id: any;
   username: any;
   isUpdateUserForm: boolean = false;
-  userReactiveForm:any;
+  userAddReactiveForm:any;
+  userUpdateReactiveForm:any;
 
   ngOnInit(): void {
   
-	this.userReactiveForm = new FormGroup({
+	this.userAddReactiveForm = new FormGroup({
+		"username": new FormControl(null, [Validators.required, Validators.minLength(5)]),
+		"password": new FormControl(null, [Validators.required, Validators.minLength(4)])
+	})
+	
+	this.userUpdateReactiveForm = new FormGroup({
 		"username": new FormControl(null, [Validators.required, Validators.minLength(5)]),
 		"password": new FormControl(null, [Validators.required, Validators.minLength(4)])
 	})
@@ -41,7 +47,7 @@ export class AddEditUsersComponent implements OnInit {
     document.getElementById("closeModal")?.click();
   }
 
-  addUser(form: NgForm){
+  addUser(form: FormGroup){
     
     let di = form.value;
     this.service.addUser(di).subscribe(res => {
@@ -50,7 +56,7 @@ export class AddEditUsersComponent implements OnInit {
     });
   }
 
-  updateUser(form: NgForm){
+  updateUser(form: any){
     let di = form.value;
     console.log(di);
     this.service.updateUser(di).subscribe(res => {
