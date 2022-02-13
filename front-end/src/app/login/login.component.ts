@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
@@ -14,8 +14,21 @@ export class LoginComponent implements OnInit {
   constructor(private service:SharedService, private router:Router, 
 				private activatedRoute:ActivatedRoute,
 				private title:Title) { }
+				
+  userLoginReactiveForm: any;
+  adminLoginReactiveForm: any;
 
   ngOnInit(): void {
+  
+	this.userLoginReactiveForm = new FormGroup({
+		"username": new FormControl(null, [Validators.required, Validators.minLength(5)]),
+		"password": new FormControl(null, [Validators.required, Validators.minLength(4)]),
+	});
+	
+	this.adminLoginReactiveForm = new FormGroup({
+		"username": new FormControl(null, [Validators.required, Validators.minLength(5)]),
+		"password": new FormControl(null, [Validators.required, Validators.minLength(4)]),
+	});
 	
 	this.title.setTitle("Login")
 
@@ -57,9 +70,9 @@ export class LoginComponent implements OnInit {
     return this.activatedRoute.snapshot.queryParams["error"] !== undefined;
   }
   
-  login(form: NgForm, loginAs:string){
-    let di = form.value;
-    this.service.login(di).subscribe(
+  login(form:FormGroup, loginAs:string){
+	
+    this.service.login(form.value).subscribe(
 		(res:any) => {
 		  if (res['access']) {
             localStorage.setItem('token', res['access']); //token here is stored in a local storage
@@ -76,9 +89,12 @@ export class LoginComponent implements OnInit {
               localStorage.setItem("role", role)
               if (data["role"] == "admin"){
                 this.router.navigateByUrl("/user")
+				form.reset();
                 return
+				
               }
               this.router.navigateByUrl("/scanner")
+			  form.reset();
             }
           )
 		},

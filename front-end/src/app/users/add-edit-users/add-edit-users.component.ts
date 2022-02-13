@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { SharedService } from 'src/app/shared.service';
 import { ShowUsersComponent } from '../show-users/show-users.component';
 
@@ -17,8 +17,15 @@ export class AddEditUsersComponent implements OnInit {
   id: any;
   username: any;
   isUpdateUserForm: boolean = false;
+  userReactiveForm:any;
 
   ngOnInit(): void {
+  
+	this.userReactiveForm = new FormGroup({
+		"username": new FormControl(null, [Validators.required, Validators.minLength(5)]),
+		"password": new FormControl(null, [Validators.required, Validators.minLength(4)])
+	})
+  
     let el = document.getElementsByClassName("modal-basic-title");
     if (el[0].innerHTML == "Update User"){
       this.isUpdateUserForm = true;

@@ -24,33 +24,43 @@
     <div class="card-body pb-4">
       <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-login-as-user" role="tabpanel" aria-labelledby="pills-login-tab">
-          <form (ngSubmit)="login(loginUserForm, 'user')" #loginUserForm=ngForm>
-            <div class="form-group">
-              <input ngModel type="text" name="username" class="form-control" id="user_username" placeholder="Username" required autofocus>
-            </div>
-
-            <div class="form-group" style="margin-top:30px">
-              <input ngModel type="password" name="password" class="form-control" id="user_password" placeholder="Password" required>
-            </div>
+          <form [formGroup]="userLoginReactiveForm" (ngSubmit)="login(userLoginReactiveForm, 'user')">
+			
+			<div class="form-floating mb-3">
+			  <input formControlName="username" type="text" class="form-control" id="floatingInput" placeholder="Username">
+			  <label for="floatingInput">Username</label>
+			  <small *ngIf="userLoginReactiveForm.get('username').invalid && userLoginReactiveForm.get('username').touched" class="text-danger l-1">Username is required and must be atleast 5 characters long</small>
+			</div>
+			
+			<div class="form-floating mb-3">
+			  <input formControlName="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+			  <label for="floatingPassword">Password</label>
+			  <small *ngIf="userLoginReactiveForm.get('password').invalid && userLoginReactiveForm.get('password').touched" class="text-danger">Password is required and must be atleast 4 characters long</small>
+			</div>
 
             <div class="text-center pt-4">
-              <button type="submit" class="btn btn-primary">Login</button>
+              <button [disabled]="userLoginReactiveForm.invalid" type="submit" class="btn btn-primary">Login</button>
             </div>
           </form>
         </div>
 
         <div class="tab-pane fade" id="pills-login-as-admin" role="tabpanel" aria-labelledby="pills-register-tab">
-          <form (ngSubmit)="login(loginAdminForm, 'admin')" #loginAdminForm=ngForm>
-            <div class="form-group">
-              <input ngModel type="text" name="username" class="form-control" id="admin_username" placeholder="Username" required autofocus>
-            </div>
-
-            <div class="form-group" style="margin-top:30px">
-              <input ngModel type="password" name="password" class="form-control" id="admin_password" placeholder="Password" required>
-            </div>
+          <form [formGroup]="adminLoginReactiveForm" (ngSubmit)="login(adminLoginReactiveForm, 'admin')">
+            <div class="form-floating mb-3">
+			  <input formControlName="username" type="text" class="form-control" id="floatingInputAdmin" placeholder="Username">
+			  <label for="floatingInputAdmin">Username</label>
+			  <small *ngIf="adminLoginReactiveForm.get('username').invalid && adminLoginReactiveForm.get('username').touched" class="text-danger">Username is required and must be atleast 5 characters long</small>
+			</div>
+			
+			<div class="form-floating mb-3">
+			  <input formControlName="password" type="password" class="form-control" id="floatingPasswordUser" placeholder="Password">
+			  <label for="floatingPasswordUser">Password</label>
+			  <small *ngIf="adminLoginReactiveForm.get('password').invalid && adminLoginReactiveForm.get('password').touched" class="text-danger">
+			  Password is required and must be atleast 4 characters long</small>
+			</div>
 
             <div class="text-center pt-4">
-              <button type="submit" class="btn btn-primary">Login</button>
+              <button [disabled]="adminLoginReactiveForm.invalid" type="submit" class="btn btn-primary">Login</button>
             </div>
           </form>
         </div>
