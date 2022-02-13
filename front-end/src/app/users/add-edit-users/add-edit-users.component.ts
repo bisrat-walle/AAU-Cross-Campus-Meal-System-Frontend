@@ -27,10 +27,7 @@ export class AddEditUsersComponent implements OnInit {
 		"password": new FormControl(null, [Validators.required, Validators.minLength(4)])
 	})
 	
-	this.userUpdateReactiveForm = new FormGroup({
-		"username": new FormControl(null, [Validators.required, Validators.minLength(5)]),
-		"password": new FormControl(null, [Validators.required, Validators.minLength(4)])
-	})
+	
   
     let el = document.getElementsByClassName("modal-basic-title");
     if (el[0].innerHTML == "Update User"){
@@ -39,6 +36,16 @@ export class AddEditUsersComponent implements OnInit {
     } else {
       this.user = ShowUsersComponent.user;
     }
+	
+	if (this.user !== undefined){
+		this.userUpdateReactiveForm = new FormGroup({
+			"id": new FormControl(this.user.id, [Validators.required]),
+			"username": new FormControl(this.user.username, [Validators.required, Validators.minLength(5)]),
+			"password": new FormControl(null, [Validators.required, Validators.minLength(4)])
+		})
+	}
+	
+	
  
     
   }
@@ -53,6 +60,7 @@ export class AddEditUsersComponent implements OnInit {
     this.service.addUser(di).subscribe(res => {
       alert(res.toString());
       this.closeModal();
+	  form.reset()
     });
   }
 
@@ -62,6 +70,7 @@ export class AddEditUsersComponent implements OnInit {
     this.service.updateUser(di).subscribe(res => {
       alert(res.toString());
       this.closeModal();
+	  form.reset()
     }); 
   }
 

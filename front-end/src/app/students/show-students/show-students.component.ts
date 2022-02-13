@@ -73,7 +73,6 @@ export class ShowStudentsComponent implements OnInit {
 	if (confirm("Are you sure you want to delete?")){
 	  this.service.deleteStudent(student.student_id).subscribe(res => {
       alert(res.toString());
-	  this.modal.close();
 	  this.refreshStudentList();
     });
 	}
