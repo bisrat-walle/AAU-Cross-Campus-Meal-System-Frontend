@@ -3,9 +3,7 @@
       <h4 class="modal-title d-flex justify-content-center" class="modal-basic-title">{{modalTitle}}</h4>
       <button id="closeModal" type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">
-          <button type="button" class="close" aria-label="Close">
             <span aria-hidden="true">&times;</span>
-          </button>
         </span>
       </button>
     </div>
@@ -60,7 +58,7 @@
     </table>
 
     <h6 *ngIf="scheduleIdFilter != '' && scheduleList.length==0" style="width:100%;text-align:center;margin-top: 20px;">No match found!</h6>
-  <h6 *ngIf="scheduleIdFilter == '' && scheduleList.length==0" style="width:100%;text-align:center;margin-top: 20px;">No student found on the system!</h6>
+  <h6 *ngIf="scheduleIdFilter == '' && scheduleList.length==0" style="width:100%;text-align:center;margin-top: 20px;">No schedule found on the system!</h6>
    
     
     <!-- Button trigger modal -->

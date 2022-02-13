@@ -1,18 +1,22 @@
-<form (ngSubmit)="addSchedule(addScheduleForm)" #addScheduleForm=ngForm id="addScheduleForm" *ngIf="!isUpdateScheduleForm">
+<form [formGroup]="addScheduleReactiveForm" (ngSubmit)="addSchedule(addScheduleReactiveForm)"  id="addScheduleForm" *ngIf="!isUpdateScheduleForm">
   <div class="form-group">
     <label for="campus">Campus</label>
-    <select ngModel name="campus" id="campus" class="form-control">
-      <option [ngValue]="null" [disabled]="true" >Enter campus</option>
+    <select formControlName="campus" id="campus" class="form-control">
+      <option [ngValue]="null" [disabled]="true" >Select campus</option>
       <option value="4killo">4 kilo</option>
       <option value="5killo">5 kilo</option>
       <option value="6killo">6 kilo</option>
     </select>
+	
+	<small *ngIf="addScheduleReactiveForm.get('campus').invalid && addScheduleReactiveForm.get('campus').touched" class="text-danger l-1">
+	Please select campus</small>
   
     </div>
 
     <div class="form-group">
       <label for="department">Departement</label>
-      <select ngModel name="department" id="department" class="form-control">
+      <select formControlName="department" id="department" class="form-control">
+	    <option [ngValue]="null" [disabled]="true" >Select Departement</option>
         <option value="software engineer">Software Engineering</option>
         <option value="electrical Engineer">Electrical Engineering</option>
         <option value="mechanical Engineer">Mechanical Engineering</option>
@@ -20,12 +24,16 @@
         <option value="civil Engineer">Civil Engineering</option>
         <option value="chemical Engineer">Chemical Engineering</option>
       </select>
+	  
+	  <small *ngIf="addScheduleReactiveForm.get('department').invalid && addScheduleReactiveForm.get('department').touched" class="text-danger l-1">
+	Please select department</small>
+	  
       </div>
 
 
       <div class="form-group">
         <label for="bach">Year Of Study</label>
-        <select ngModel name="bach" id="bach" class="form-control">
+        <select formControlName="bach" id="bach" class="form-control">
           <option [ngValue]="null" [disabled]="true" >Enter year</option>
           <option value="1">First</option>
           <option value="2">Second</option>
@@ -33,61 +41,80 @@
           <option value="4">Fourth</option>
           <option value="5">Fifth</option>
         </select>
-      
-        </div>
+      <small *ngIf="addScheduleReactiveForm.get('bach').invalid && addScheduleReactiveForm.get('bach').touched" class="text-danger l-1">
+	Please select year</small>
+    
+      </div>
 
         <div class="form-group">
           <label for="exampleInputEmail1">Section</label>
-          <input ngModel name="section" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter section">
-          </div>
+          <input formControlName="section" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter section">
+          <small *ngIf="addScheduleReactiveForm.get('section').invalid && addScheduleReactiveForm.get('section').touched" class="text-danger l-1">
+			Section is required</small>
+		  
+		  </div>
   
   <div class="form-group">
     <label for="exampleInputEmail1">DAY</label>
-    <select ngModel name="day" id="bach" class="form-control">
-      <option [ngValue]="null" [disabled]="true" >Enter DAY</option>
+    <select formControlName="day" id="bach" class="form-control">
+      <option [ngValue]="null" [disabled]="true" >Select DAY</option>
       <option value="monday">Monday</option>
       <option value="tuesday">Tuesday</option>
       <option value="wednesday">Wednesday</option>
       <option value="thursday">Thursday</option>
       <option value="friday">Friday</option>
     </select>
+	<small *ngIf="addScheduleReactiveForm.get('day').invalid && addScheduleReactiveForm.get('day').touched" class="text-danger l-1">
+	Please select day</small>
     </div>
     <div class="form-group">
     <label for="exampleInputEmail1">Start Time</label>
-    <input ngModel name="startTime" type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
-    </div>
+    <input formControlName="startTime" type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+    <small *ngIf="addScheduleReactiveForm.get('startTime').invalid && addScheduleReactiveForm.get('startTime').touched" class="text-danger l-1">
+	Start time is required</small>
+	
+	</div>
 
     <div class="form-group">
       <label for="exampleInputEmail1">End Time</label>
-      <input ngModel name="endTime" type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
-      </div>
+      <input formControlName="endTime" type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+    <small *ngIf="addScheduleReactiveForm.get('endTime').invalid && addScheduleReactiveForm.get('endTime').touched" class="text-danger l-1">
+	End time is required</small>
+	</div>
 
     
 
     <div class="form-group">
       <label for="exampleInputEmail1">Schedule ID</label>
-      <input ngModel name="schedule_id" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter student id">
-      </div>
+      <input formControlName="schedule_id" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter student id">
+      <small *ngIf="addScheduleReactiveForm.get('schedule_id').invalid && addScheduleReactiveForm.get('schedule_id').touched" class="text-danger l-1">
+	Schedule id is required</small>
+	</div>
+	  
     <div class="text-center" style="margin-top: 30px;">
-    <button type="submit" class="btn btn-primary">Add</button>
+    <button [disabled]="addScheduleReactiveForm.invalid" type="submit" class="btn btn-primary">Add</button>
     </div>
 </form>
 
-<form (ngSubmit)="updateSchedule(updateScheduleForm)" #updateScheduleForm=ngForm id="addScheduleForm" *ngIf="isUpdateScheduleForm">
+<form [formGroup]="updateScheduleReactiveForm" (ngSubmit)="updateSchedule(updateScheduleReactiveForm)" id="addScheduleForm" *ngIf="isUpdateScheduleForm">
   <div class="form-group">
     <label for="campus">Campus</label>
-    <select ngModel={{schedule.campus}} name="campus" id="campus" class="form-control">
-      <option [ngValue]="null" [disabled]="true" >Enter campus</option>
+    <select formControlName="campus" id="campus" class="form-control">
+      <option [ngValue]="null" [disabled]="true" >Select campus</option>
       <option value="4killo">4 kilo</option>
       <option value="5killo">5 kilo</option>
       <option value="6killo">6 kilo</option>
     </select>
+	
+	<small *ngIf="updateScheduleReactiveForm.get('campus').invalid && updateScheduleReactiveForm.get('campus').touched" class="text-danger l-1">
+	Please select campus</small>
   
     </div>
 
     <div class="form-group">
       <label for="department">Departement</label>
-      <select ngModel={{schedule.department}} name="department" id="department" class="form-control">
+      <select formControlName="department" id="department" class="form-control">
+	    <option [ngValue]="null" [disabled]="true" >Select Departement</option>
         <option value="software engineer">Software Engineering</option>
         <option value="electrical Engineer">Electrical Engineering</option>
         <option value="mechanical Engineer">Mechanical Engineering</option>
@@ -95,12 +122,16 @@
         <option value="civil Engineer">Civil Engineering</option>
         <option value="chemical Engineer">Chemical Engineering</option>
       </select>
+	  
+	  <small *ngIf="updateScheduleReactiveForm.get('department').invalid && updateScheduleReactiveForm.get('department').touched" class="text-danger l-1">
+	Please select department</small>
+	  
       </div>
 
 
       <div class="form-group">
         <label for="bach">Year Of Study</label>
-        <select ngModel={{schedule.bach}} name="bach" id="bach" class="form-control">
+        <select formControlName="bach" id="bach" class="form-control">
           <option [ngValue]="null" [disabled]="true" >Enter year</option>
           <option value="1">First</option>
           <option value="2">Second</option>
@@ -108,43 +139,57 @@
           <option value="4">Fourth</option>
           <option value="5">Fifth</option>
         </select>
-      
-        </div>
+      <small *ngIf="updateScheduleReactiveForm.get('bach').invalid && updateScheduleReactiveForm.get('bach').touched" class="text-danger l-1">
+	Please select year</small>
+    
+      </div>
 
         <div class="form-group">
           <label for="exampleInputEmail1">Section</label>
-          <input ngModel={{schedule.section}} name="section" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter section">
-          </div>
+          <input formControlName="section" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter section">
+          <small *ngIf="updateScheduleReactiveForm.get('section').invalid && updateScheduleReactiveForm.get('section').touched" class="text-danger l-1">
+			Section is required</small>
+		  
+		  </div>
   
   <div class="form-group">
     <label for="exampleInputEmail1">DAY</label>
-    <select ngModel={{schedule.day}} name="day" id="day" class="form-control">
-      <option [ngValue]="null" [disabled]="true" >Enter DAY</option>
+    <select formControlName="day" id="bach" class="form-control">
+      <option [ngValue]="null" [disabled]="true" >Select DAY</option>
       <option value="monday">Monday</option>
       <option value="tuesday">Tuesday</option>
       <option value="wednesday">Wednesday</option>
       <option value="thursday">Thursday</option>
       <option value="friday">Friday</option>
     </select>
+	<small *ngIf="updateScheduleReactiveForm.get('day').invalid && updateScheduleReactiveForm.get('day').touched" class="text-danger l-1">
+	Please select day</small>
     </div>
     <div class="form-group">
     <label for="exampleInputEmail1">Start Time</label>
-    <input ngModel={{schedule.startTime}} name="startTime" type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
-    </div>
+    <input formControlName="startTime" type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+    <small *ngIf="updateScheduleReactiveForm.get('startTime').invalid && updateScheduleReactiveForm.get('startTime').touched" class="text-danger l-1">
+	Start time is required</small>
+	
+	</div>
 
     <div class="form-group">
       <label for="exampleInputEmail1">End Time</label>
-      <input ngModel={{schedule.endTime}} name="endTime" type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
-      </div>
+      <input formControlName="endTime" type="time" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+    <small *ngIf="updateScheduleReactiveForm.get('endTime').invalid && updateScheduleReactiveForm.get('endTime').touched" class="text-danger l-1">
+	End time is required</small>
+	</div>
 
     
 
     <div class="form-group">
       <label for="exampleInputEmail1">Schedule ID</label>
-      <input ngModel={{schedule.schedule_id}} name="schedule_id" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter student id">
-      </div>
+      <input formControlName="schedule_id" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter student id">
+      <small *ngIf="updateScheduleReactiveForm.get('schedule_id').invalid && updateScheduleReactiveForm.get('schedule_id').touched" class="text-danger l-1">
+	Schedule id is required</small>
+	</div>
     <div class="text-center" style="margin-top: 30px;">
-    <button type="submit" class="btn btn-primary">Update</button>
+    <button [disabled]="updateScheduleReactiveForm.invalid" type="submit" class="btn btn-primary">Update</button>
     </div>
 </form>
 
