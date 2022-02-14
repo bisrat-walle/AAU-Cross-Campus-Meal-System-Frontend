@@ -23,6 +23,9 @@ export class AddEditStudentsComponent implements OnInit {
   updateStudentReactiveForm:any;
 
   ngOnInit(): void {
+	
+	
+  
     let el = document.getElementsByClassName("modal-basic-title");
     if (el[0].innerHTML == "Update Student"){
       this.isUpdateStudentForm = true;
@@ -53,7 +56,6 @@ export class AddEditStudentsComponent implements OnInit {
 	}
 	
 	
- 
     
   }
   
@@ -94,6 +96,19 @@ export class AddEditStudentsComponent implements OnInit {
       this.closeModal();
 	  form.reset();
     }); 
+  }
+  
+  onChanges():any{
+	this.addStudentReactiveForm.valueChanges.subscribe(
+		(selectedCampus:any) => {
+			if (selectedCampus != "5killo"){
+				this.addStudentReactiveForm.patchValue({"department":"Other"});
+				this.addStudentReactiveForm.get('department').disable();
+			} else {
+				//this.addStudentReactiveForm.get('department').
+			}
+		}
+	)
   }
 
 }
