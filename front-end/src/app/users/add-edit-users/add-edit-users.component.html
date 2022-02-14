@@ -26,7 +26,7 @@
   
   <div class="form-group">
 	<label for="exampleInputPassword1">Password</label>
-	<input formControlName="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+	<input formControlName="password" type="password" [ngClass]="getClass(userAddReactiveForm, 'password')" id="exampleInputPassword1" placeholder="Password">
 	<small *ngIf="userAddReactiveForm.get('password').invalid && userAddReactiveForm.get('password').touched" class="text-danger l-1">
 	Password is required and must be atleast 4 characters long</small>
   </div>
@@ -41,14 +41,33 @@
 <form [formGroup]="userUpdateReactiveForm" (ngSubmit)="updateUser(userUpdateReactiveForm)" id="updateUserForm" *ngIf="isUpdateUserForm">
   <input formControlName="id" type="hidden">
   <div class="form-group">
+	<label for="exampleInputEmail1">Name</label>
+	<input formControlName="first_name" type="text" [ngClass]="getClass(userUpdateReactiveForm, 'first_name')" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+	<small *ngIf="userUpdateReactiveForm.get('first_name').invalid && userUpdateReactiveForm.get('first_name').touched" class="text-danger l-1">
+	Name is required and must be atleast 5 characters long</small>
+  </div>
+  <div class="form-group">
     <label for="exampleInputEmail1">Username</label>
     <input formControlName="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
 	<small *ngIf="userUpdateReactiveForm.get('username').invalid && userUpdateReactiveForm.get('username').touched" class="text-danger l-1">
 	Username is required and must be atleast 5 characters long</small>
   </div>
+  
+  <div class="form-group">
+  <label for="campus">Campus</label>
+  <select formControlName="last_name" id="campus" [ngClass]="getClass(userUpdateReactiveForm, 'last_name')">
+    <option [ngValue]="null" [disabled]="true" >Select campus</option>
+    <option value="4killo">4 kilo</option>
+    <option value="5killo">5 kilo</option>
+    <option value="6killo">6 kilo</option>
+  </select>
+	<small *ngIf="userUpdateReactiveForm.get('last_name').invalid && userUpdateReactiveForm.get('last_name').touched" class="text-danger l-1">
+	Please select campus</small>
+  </div>
+  
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-	<input formControlName="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+	<input formControlName="password" type="password" [ngClass]="getClass(userUpdateReactiveForm, 'password')" id="exampleInputPassword1" placeholder="Password">
     <small *ngIf="userUpdateReactiveForm.get('password').invalid && userUpdateReactiveForm.get('password').touched" class="text-danger l-1">
 	Password is required and must be atleast 4 characters long</small>
    </div>
