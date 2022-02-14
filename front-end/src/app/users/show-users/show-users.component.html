@@ -22,12 +22,14 @@
     <thead>
       <th>Name</th>
       <th>Username</th>
+	  <th>Campus</th>
       <th>Options</th>
     </thead>
     <tbody>
       <tr *ngFor="let user of userList">
-          <td>{{user.name}}</td>
+          <td>{{user.first_name}}</td>
           <td>{{user.username}}</td>
+		  <td>{{user.last_name}}</td>
           <td>
               <button (click)="open(mymodal, 'Update User', 'Update', user)" type="button" class="btn btn-light mr-1" style="margin-right:10px;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-pencil-square" viewBox="0 0 16 16">

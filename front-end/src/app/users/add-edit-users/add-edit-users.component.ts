@@ -24,7 +24,9 @@ export class AddEditUsersComponent implements OnInit {
   
 	this.userAddReactiveForm = new FormGroup({
 		"username": new FormControl(null, [Validators.required, Validators.minLength(5)]),
-		"password": new FormControl(null, [Validators.required, Validators.minLength(4)])
+		"password": new FormControl(null, [Validators.required, Validators.minLength(4)]),
+		"last_name": new FormControl(null, [Validators.required, Validators.minLength(5)]),
+		"first_name": new FormControl(null, [Validators.required, Validators.minLength(4)])
 	})
 	
 	
@@ -41,13 +43,29 @@ export class AddEditUsersComponent implements OnInit {
 		this.userUpdateReactiveForm = new FormGroup({
 			"id": new FormControl(this.user.id, [Validators.required]),
 			"username": new FormControl(this.user.username, [Validators.required, Validators.minLength(5)]),
-			"password": new FormControl(null, [Validators.required, Validators.minLength(4)])
+			"password": new FormControl(null, [Validators.required, Validators.minLength(4)]),
+			"last_name": new FormControl(this.user.last_name, [Validators.required]),
+			"first_name": new FormControl(this.user.first_name, [Validators.required, Validators.minLength(4)])
 		})
 	}
 	
 	
  
     
+  }
+  
+  getClass(form:any, fieldname:any):string{
+	let classList="form-control ";
+	
+	if (form.get(fieldname).invalid && form.get(fieldname).touched){
+	 classList += "is-invalid"
+	} 
+	
+	else if (form.get(fieldname).touched){
+	 classList += "is-valid"
+	}
+	
+	return classList;
   }
 
   closeModal():void{

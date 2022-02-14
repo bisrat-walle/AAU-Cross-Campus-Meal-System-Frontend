@@ -70,6 +70,19 @@ export class LoginComponent implements OnInit {
     return this.activatedRoute.snapshot.queryParams["error"] !== undefined;
   }
   
+  
+  getClass(form:any, fieldname:any):string{
+	let classList="form-control ";
+	
+	if (form.get(fieldname).invalid && form.get(fieldname).touched){
+	 classList += "is-invalid"
+	} else{
+	 classList += "is-valid"
+	}
+	
+	return classList;
+  }
+  
   login(form:FormGroup, loginAs:string){
 	
     this.service.login(form.value).subscribe(

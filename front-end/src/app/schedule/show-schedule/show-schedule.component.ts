@@ -76,7 +76,7 @@ export class ShowScheduleComponent implements OnInit {
 	
   deleteSchedule(schedule:any){
 	if (confirm("Are you sure you want to delete?")){
-	  this.service.deleteSchedule(schedule.schedule_id).subscribe(res => {
+	  this.service.deleteSchedule(schedule.id).subscribe(res => {
       alert(res.toString());
 	  this.refreshScheduleList();
     });

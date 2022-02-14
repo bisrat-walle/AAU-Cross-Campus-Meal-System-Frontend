@@ -27,13 +27,15 @@
           <form [formGroup]="userLoginReactiveForm" (ngSubmit)="login(userLoginReactiveForm, 'user')">
 			
 			<div class="form-floating mb-3">
-			  <input formControlName="username" type="text" class="form-control" id="floatingInput" placeholder="Username">
+			  <input formControlName="username" type="text" [ngClass]="getClass(userLoginReactiveForm, 'username')" id="floatingInput" placeholder="Username">
 			  <label for="floatingInput">Username</label>
 			  <small *ngIf="userLoginReactiveForm.get('username').invalid && userLoginReactiveForm.get('username').touched" class="text-danger l-1">Username is required and must be atleast 5 characters long</small>
 			</div>
 			
 			<div class="form-floating mb-3">
-			  <input formControlName="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+			  <input
+				[ngClass]="getClass(userLoginReactiveForm, 'password')"
+			  formControlName="password" type="password" id="floatingPassword" placeholder="Password">
 			  <label for="floatingPassword">Password</label>
 			  <small *ngIf="userLoginReactiveForm.get('password').invalid && userLoginReactiveForm.get('password').touched" class="text-danger">Password is required and must be atleast 4 characters long</small>
 			</div>
@@ -47,13 +49,13 @@
         <div class="tab-pane fade" id="pills-login-as-admin" role="tabpanel" aria-labelledby="pills-register-tab">
           <form [formGroup]="adminLoginReactiveForm" (ngSubmit)="login(adminLoginReactiveForm, 'admin')">
             <div class="form-floating mb-3">
-			  <input formControlName="username" type="text" class="form-control" id="floatingInputAdmin" placeholder="Username">
+			  <input formControlName="username" type="text" [ngClass]="getClass(adminLoginReactiveForm, 'username')" id="floatingInputAdmin" placeholder="Username">
 			  <label for="floatingInputAdmin">Username</label>
 			  <small *ngIf="adminLoginReactiveForm.get('username').invalid && adminLoginReactiveForm.get('username').touched" class="text-danger">Username is required and must be atleast 5 characters long</small>
 			</div>
 			
 			<div class="form-floating mb-3">
-			  <input formControlName="password" type="password" class="form-control" id="floatingPasswordUser" placeholder="Password">
+			  <input formControlName="password" type="password" [ngClass]="getClass(adminLoginReactiveForm, 'password')" id="floatingPasswordUser" placeholder="Password">
 			  <label for="floatingPasswordUser">Password</label>
 			  <small *ngIf="adminLoginReactiveForm.get('password').invalid && adminLoginReactiveForm.get('password').touched" class="text-danger">
 			  Password is required and must be atleast 4 characters long</small>

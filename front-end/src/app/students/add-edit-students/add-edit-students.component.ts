@@ -56,6 +56,20 @@ export class AddEditStudentsComponent implements OnInit {
  
     
   }
+  
+  getClass(form:any, fieldname:any):string{
+	let classList="form-control ";
+	
+	if (form.get(fieldname).invalid && form.get(fieldname).touched){
+	 classList += "is-invalid"
+	} 
+	
+	else if (form.get(fieldname).touched){
+	 classList += "is-valid"
+	}
+	
+	return classList;
+  }
 
   closeModal():void{
     document.getElementById("closeModal")?.click();
@@ -74,6 +88,7 @@ export class AddEditStudentsComponent implements OnInit {
 
   updateStudent(form: any){
     let di = form.value;
+	console.log(di.department)
     this.service.updateStudent(di).subscribe(res => {
       alert(res.toString());
       this.closeModal();

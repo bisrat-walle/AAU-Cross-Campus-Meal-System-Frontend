@@ -1,10 +1,29 @@
 <form [formGroup]="userAddReactiveForm" (ngSubmit)="addUser(userAddReactiveForm)" id="addUserForm" *ngIf="!isUpdateUserForm">
+	<div class="form-group">
+	<label for="exampleInputEmail1">Name</label>
+	<input formControlName="first_name" type="text" [ngClass]="getClass(userAddReactiveForm, 'first_name')" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+	<small *ngIf="userAddReactiveForm.get('first_name').invalid && userAddReactiveForm.get('first_name').touched" class="text-danger l-1">
+	Name is required and must be atleast 5 characters long</small>
+  </div>
   <div class="form-group">
 	<label for="exampleInputEmail1">Username</label>
-	<input formControlName="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+	<input formControlName="username" type="text" [ngClass]="getClass(userAddReactiveForm, 'username')" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
 	<small *ngIf="userAddReactiveForm.get('username').invalid && userAddReactiveForm.get('username').touched" class="text-danger l-1">
 	Username is required and must be atleast 5 characters long</small>
   </div>
+  
+  <div class="form-group">
+  <label for="campus">Campus</label>
+  <select formControlName="last_name" id="campus" [ngClass]="getClass(userAddReactiveForm, 'last_name')">
+    <option [ngValue]="null" [disabled]="true" >Select campus</option>
+    <option value="4killo">4 kilo</option>
+    <option value="5killo">5 kilo</option>
+    <option value="6killo">6 kilo</option>
+  </select>
+	<small *ngIf="userAddReactiveForm.get('last_name').invalid && userAddReactiveForm.get('last_name').touched" class="text-danger l-1">
+	Please select campus</small>
+  </div>
+  
   <div class="form-group">
 	<label for="exampleInputPassword1">Password</label>
 	<input formControlName="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">

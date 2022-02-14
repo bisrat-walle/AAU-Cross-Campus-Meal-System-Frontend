@@ -1,20 +1,20 @@
 <form [formGroup]="addStudentReactiveForm" (ngSubmit)="addStudent(addStudentReactiveForm)" id="addStudentForm" *ngIf="!isUpdateStudentForm">
   <div class="form-group">
 	<label for="exampleInputEmail1">Student ID</label>
-	<input formControlName="student_id" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter student id">
+	<input formControlName="student_id" type="text" [ngClass]="getClass(addStudentReactiveForm, 'student_id')" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter student id">
     <small *ngIf="addStudentReactiveForm.get('student_id').invalid && addStudentReactiveForm.get('student_id').touched" class="text-danger l-1">
 	Student ID is required and must have format like UGR/4425/12</small>
   </div>
   <div class="form-group">
 	<label for="exampleInputEmail1">Name</label>
-	<input formControlName="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+	<input formControlName="name" type="text" [ngClass]="getClass(addStudentReactiveForm, 'name')" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
 	<small *ngIf="addStudentReactiveForm.get('name').invalid && addStudentReactiveForm.get('name').touched" class="text-danger l-1">
 	Student name is required and must have atleast 6 characters</small>
   </div>
   
   <div class="form-group">
   <label for="campus">Campus</label>
-  <select formControlName="campus" id="campus" class="form-control">
+  <select formControlName="campus" id="campus" [ngClass]="getClass(addStudentReactiveForm, 'campus')">
     <option [ngValue]="null" [disabled]="true" >Select campus</option>
     <option value="4killo">4 kilo</option>
     <option value="5killo">5 kilo</option>
@@ -26,14 +26,14 @@
   
   <div class="form-group">
   <label for="department">Departement</label>
-	<select formControlName="department" id="department" class="form-control">
+	<select formControlName="department" id="department" [ngClass]="getClass(addStudentReactiveForm, 'department')">
 	<option [ngValue]="null" [disabled]="true">Select Departement</option>
-    <option value="software engineer">Software Engineering</option>
-    <option value="electrical Engineer">Electrical Engineering</option>
-    <option value="mechanical Engineer">Mechanical Engineering</option>
-    <option value="biomedical Engineer">Biomedical Engineering</option>
-    <option value="civil Engineer">Civil Engineering</option>
-    <option value="chemical Engineer">Chemical Engineering</option>
+      <option value="Software Engineering">Software Engineering</option>
+      <option value="Electrical Engineering">Electrical Engineering</option>
+      <option value="Mechanical Engineering">Mechanical Engineering</option>
+      <option value="Biomedical Engineering">Biomedical Engineering</option>
+      <option value="Civil Engineering">Civil Engineering</option>
+      <option value="Chemical Engineering">Chemical Engineering</option>
   </select>
   
   <small *ngIf="addStudentReactiveForm.get('department').invalid && addStudentReactiveForm.get('department').touched" class="text-danger l-1">
@@ -45,7 +45,7 @@
 
   <div class="form-group">
   <label for="bach">Year Of Study</label>
-	<select formControlName="bach" id="bach" class="form-control">
+	<select formControlName="bach" id="bach" [ngClass]="getClass(addStudentReactiveForm, 'bach')">
     <option [ngValue]="null" [disabled]="true" >Select year</option>
     <option value="1">First</option>
     <option value="2">Second</option>
@@ -62,7 +62,7 @@
 
   <div class="form-group">
   <label for="exampleInputEmail1">Section</label>
-	<input formControlName="section" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter section">
+	<input formControlName="section" type="number" [ngClass]="getClass(addStudentReactiveForm, 'section')" id="name" aria-describedby="emailHelp" placeholder="Enter section">
   </div>
   <small *ngIf="addStudentReactiveForm.get('section').invalid && addStudentReactiveForm.get('section').touched" class="text-danger l-1">
 	Section is required</small>
@@ -81,20 +81,20 @@
 <form [formGroup]="updateStudentReactiveForm" (ngSubmit)="updateStudent(updateStudentReactiveForm)" id="updateStudentForm" *ngIf="isUpdateStudentForm">
   <div class="form-group">
 	<label for="exampleInputEmail1">Student ID</label>
-	<input formControlName="student_id" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter student id">
+	<input formControlName="student_id" type="text" [ngClass]="getClass(updateStudentReactiveForm, 'student_id')" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter student id">
 	<small *ngIf="updateStudentReactiveForm.get('student_id').invalid && updateStudentReactiveForm.get('student_id').touched" class="text-danger l-1">
 	Student ID is required and must have format like UGR/4425/12</small>
   </div>
   <div class="form-group">
 	<label for="exampleInputEmail1">Name</label>
-	<input formControlName="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter student name">
+	<input formControlName="name" type="text" [ngClass]="getClass(updateStudentReactiveForm, 'name')" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter student name">
   <small *ngIf="updateStudentReactiveForm.get('name').invalid && updateStudentReactiveForm.get('name').touched" class="text-danger l-1">
 	Student name is required and must have atleast 6 characters</small>
   </div>
   
   <div class="form-group">
           <label for="campus">Campus</label>
-        <select formControlName="campus" id="campus" class="form-control">
+        <select formControlName="campus" id="campus" [ngClass]="getClass(updateStudentReactiveForm, 'campus')">
           <option [ngValue]="null" [disabled]="true" >Enter campus</option>
           <option value="4killo">4 kilo</option>
           <option value="5killo">5 kilo</option>
@@ -105,41 +105,42 @@
         </div>
   
   <div class="form-group">
-    <label for="department">Departement</label>
-    <select formControlName="department" id="department" class="form-control">
-      <option value="software engineer">Software Engineering</option>
-      <option value="electrical Engineer">Electrical Engineering</option>
-      <option value="mechanical Engineer">Mechanical Engineering</option>
-      <option value="biomedical Engineer">Biomedical Engineering</option>
-      <option value="civil Engineer">Civil Engineering</option>
-      <option value="chemical Engineer">Chemical Engineering</option>
-    </select>
-	
-	<small *ngIf="updateStudentReactiveForm.get('department').invalid && updateStudentReactiveForm.get('department').touched" class="text-danger l-1">
+  <label for="department">Departement</label>
+	<select formControlName="department" id="department" [ngClass]="getClass(updateStudentReactiveForm, 'department')">
+	<option [ngValue]="null" [disabled]="true">Select Departement</option>
+      <option value="Software Engineering">Software Engineering</option>
+      <option value="Electrical Engineering">Electrical Engineering</option>
+      <option value="Mechanical Engineering">Mechanical Engineering</option>
+      <option value="Biomedical Engineering">Biomedical Engineering</option>
+      <option value="Civil Engineering">Civil Engineering</option>
+      <option value="Chemical Engineering">Chemical Engineering</option>
+  </select>
+  
+  <small *ngIf="updateStudentReactiveForm.get('department').invalid && updateStudentReactiveForm.get('department').touched" class="text-danger l-1">
 	Please select department</small>
-	
-    </div>
+  
+  </div>
     <div class="form-group">
-      <label for="bach">Year Of Study</label>
-      <select formControlName="bach" id="bach" class="form-control">
-        <option [ngValue]="null" [disabled]="true" >Enter year</option>
-        <option value="1">First</option>
-        <option value="2">Second</option>
-        <option value="3">Third</option>
-        <option value="4">Fourth</option>
-        <option value="5">Fifth</option>
-      </select>
-	  
-	  <small *ngIf="updateStudentReactiveForm.get('bach').invalid && updateStudentReactiveForm.get('bach').touched" class="text-danger l-1">
+  <label for="bach">Year Of Study</label>
+	<select formControlName="bach" id="bach" [ngClass]="getClass(updateStudentReactiveForm, 'bach')">
+    <option [ngValue]="null" [disabled]="true" >Select year</option>
+    <option value="1">First</option>
+    <option value="2">Second</option>
+    <option value="3">Third</option>
+    <option value="4">Fourth</option>
+    <option value="5">Fifth</option>
+  </select>
+  
+  <small *ngIf="updateStudentReactiveForm.get('bach').invalid && updateStudentReactiveForm.get('bach').touched" class="text-danger l-1">
 	Please select year</small>
-    
-      </div>
+
+  </div>
 	  
       
 
   <div class="form-group">
   <label for="exampleInputEmail1">Section</label>
-	<input formControlName="section" type="number" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter Section">
+	<input formControlName="section" type="number" [ngClass]="getClass(updateStudentReactiveForm, 'section')" id="name" aria-describedby="emailHelp" placeholder="Enter Section">
   <small *ngIf="updateStudentReactiveForm.get('section').invalid && updateStudentReactiveForm.get('section').touched" class="text-danger l-1">
 	Section is required</small>
   </div>
