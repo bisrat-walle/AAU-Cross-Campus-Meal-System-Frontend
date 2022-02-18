@@ -6,6 +6,7 @@ import { ScannerComponent } from './scanner/scanner.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
+import { StatComponent } from './stat/stat.component';
 import { VerifyFailedComponent } from './scanner/verify-failed/verify-failed.component';
 import { AdminGuardGuard } from './admin-guard.guard';
 import { AuthGuard } from './auth.guard';
@@ -24,7 +25,8 @@ const routes: Routes = [
 
   {path:'schedule', component: ScheduleComponent, canActivate:[AuthGuard, AdminGuardGuard]},
   {path:'', component: HomePageComponent},
-  {path:'login', component: LoginComponent}
+  {path:'login', component: LoginComponent},
+  {path:'statistics', component: StatComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({
