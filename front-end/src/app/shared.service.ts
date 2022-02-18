@@ -87,4 +87,8 @@ export class SharedService {
   scan(val:any=null):Observable<any>{
     return this.http.post(this.APIUrl + '/scan/', val);
   }
+  
+  getStat():Observable<any>{
+    return this.http.get(this.APIUrl + '/students/expected/');
+  }
 }
