@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -9,6 +9,8 @@ import { Title } from '@angular/platform-browser';
 export class VerifySucessComponent implements OnInit {
 
   constructor(private title:Title) { }
+  
+  @Input() reason:any;
 
   ngOnInit(): void {
 	this.title.setTitle("Verify Success");

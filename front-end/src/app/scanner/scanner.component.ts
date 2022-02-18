@@ -13,7 +13,8 @@ export class ScannerComponent implements OnInit {
   constructor(private router:Router, private service:SharedService, private title:Title) { }
   
   
-  reason:any;
+  parentReason:any;
+  
 
   ngOnInit(): void {
 	this.title.setTitle("Scan Id")
@@ -39,7 +40,7 @@ export class ScannerComponent implements OnInit {
     (data:any) => {
       console.log(data);
       result = data;
-	  this.reason = data.reason;
+	  this.parentReason = data.reason;
       if (data.status == false){
         this.router.navigateByUrl("/scanner/failed");
         return
