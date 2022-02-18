@@ -25,6 +25,7 @@ import { VerifyFailedComponent } from './scanner/verify-failed/verify-failed.com
 import { AdminGuardGuard } from './admin-guard.guard';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { StatComponent } from './stat/stat.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { TokenInterceptorService } from './token-interceptor.service';
     AddEditScheduleComponent,
     ShowScheduleComponent,
     VerifySucessComponent,
-    VerifyFailedComponent
+    VerifyFailedComponent,
+    StatComponent
   ],
   imports: [
     BrowserModule,
