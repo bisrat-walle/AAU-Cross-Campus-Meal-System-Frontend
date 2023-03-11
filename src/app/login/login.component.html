@@ -1,68 +1,175 @@
 <div class="container">
-  <div class="card mx-auto border-0" style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;margin:50px;">
+  <div
+    class="card mx-auto border-0"
+    style="box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; margin: 50px"
+  >
     <div class="card-header border-bottom-0 bg-transparent">
-      <ul class="nav nav-tabs justify-content-center pt-4" id="pills-tab" role="tablist">
+      <ul
+        class="nav nav-tabs justify-content-center pt-4"
+        id="pills-tab"
+        role="tablist"
+      >
         <li class="nav-item">
-          <button class="nav-link active text-primary" id="pills-login-as-user-button" data-toggle="pill" role="tab" aria-controls="pills-login"
-             aria-selected="true">Login as User</button>
+          <button
+            class="nav-link active text-primary"
+            id="pills-login-as-user-button"
+            data-toggle="pill"
+            role="tab"
+            aria-controls="pills-login"
+            aria-selected="true"
+          >
+            Login as User
+          </button>
         </li>
 
         <li class="nav-item">
-          <button class="nav-link text-primary" id="pills-login-as-admin-button" data-toggle="pill" role="tab" aria-controls="pills-register"
-             aria-selected="false">Login as Admin</button>
+          <button
+            class="nav-link text-primary"
+            id="pills-login-as-admin-button"
+            data-toggle="pill"
+            role="tab"
+            aria-controls="pills-register"
+            aria-selected="false"
+          >
+            Login as Admin
+          </button>
         </li>
       </ul>
     </div>
 
     <div *ngIf="error()" class="text-center">
-      <div style="width: 90%;margin: auto;height: 30px;padding: 0;" class="alert alert-danger" role="alert">
+      <div
+        style="width: 90%; margin: auto; height: 30px; padding: 0"
+        class="alert alert-danger"
+        role="alert"
+      >
         Invalid credientials!
       </div>
     </div>
-   
 
     <div class="card-body pb-4">
       <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-login-as-user" role="tabpanel" aria-labelledby="pills-login-tab">
-          <form [formGroup]="userLoginReactiveForm" (ngSubmit)="login(userLoginReactiveForm, 'user')">
-			
-			<div class="form-floating mb-3">
-			  <input formControlName="username" type="text" [ngClass]="getClass(userLoginReactiveForm, 'username')" id="floatingInput" placeholder="Username">
-			  <label for="floatingInput">Username</label>
-			  <small *ngIf="userLoginReactiveForm.get('username').invalid && userLoginReactiveForm.get('username').touched" class="text-danger l-1">Username is required and must be atleast 5 characters long</small>
-			</div>
-			
-			<div class="form-floating mb-3">
-			  <input
-				[ngClass]="getClass(userLoginReactiveForm, 'password')"
-			  formControlName="password" type="password" id="floatingPassword" placeholder="Password">
-			  <label for="floatingPassword">Password</label>
-			  <small *ngIf="userLoginReactiveForm.get('password').invalid && userLoginReactiveForm.get('password').touched" class="text-danger">Password is required and must be atleast 4 characters long</small>
-			</div>
+        <div
+          class="tab-pane fade show active"
+          id="pills-login-as-user"
+          role="tabpanel"
+          aria-labelledby="pills-login-tab"
+        >
+          <form
+            [formGroup]="userLoginReactiveForm"
+            (ngSubmit)="login(userLoginReactiveForm, 'user')"
+          >
+            <div class="form-floating mb-3">
+              <input
+                formControlName="username"
+                type="text"
+                [ngClass]="getClass(userLoginReactiveForm, 'username')"
+                id="floatingInput"
+                placeholder="Username"
+              />
+              <label for="floatingInput">Username</label>
+              <small
+                *ngIf="
+                  userLoginReactiveForm.get('username').invalid &&
+                  userLoginReactiveForm.get('username').touched
+                "
+                class="text-danger l-1"
+                >Username is required and must be atleast 5 characters
+                long</small
+              >
+            </div>
+
+            <div class="form-floating mb-3">
+              <input
+                [ngClass]="getClass(userLoginReactiveForm, 'password')"
+                formControlName="password"
+                type="password"
+                id="floatingPassword"
+                placeholder="Password"
+              />
+              <label for="floatingPassword">Password</label>
+              <small
+                *ngIf="
+                  userLoginReactiveForm.get('password').invalid &&
+                  userLoginReactiveForm.get('password').touched
+                "
+                class="text-danger"
+                >Password is required and must be atleast 4 characters
+                long</small
+              >
+            </div>
 
             <div class="text-center pt-4">
-              <button [disabled]="userLoginReactiveForm.invalid" type="submit" class="btn btn-primary">Login</button>
+              <button
+                [disabled]="userLoginReactiveForm.invalid"
+                type="submit"
+                class="btn btn-primary"
+              >
+                Login
+              </button>
             </div>
           </form>
         </div>
 
-        <div class="tab-pane fade" id="pills-login-as-admin" role="tabpanel" aria-labelledby="pills-register-tab">
-          <form [formGroup]="adminLoginReactiveForm" (ngSubmit)="login(adminLoginReactiveForm, 'admin')">
+        <div
+          class="tab-pane fade"
+          id="pills-login-as-admin"
+          role="tabpanel"
+          aria-labelledby="pills-register-tab"
+        >
+          <form
+            [formGroup]="adminLoginReactiveForm"
+            (ngSubmit)="login(adminLoginReactiveForm, 'admin')"
+          >
             <div class="form-floating mb-3">
-			  <input formControlName="username" type="text" [ngClass]="getClass(adminLoginReactiveForm, 'username')" id="floatingInputAdmin" placeholder="Username">
-			  <label for="floatingInputAdmin">Username</label>
-			  <small *ngIf="adminLoginReactiveForm.get('username').invalid && adminLoginReactiveForm.get('username').touched" class="text-danger">Username is required and must be atleast 5 characters long</small>
-			</div>
-			
-			<div class="form-floating mb-3">
-			  <input formControlName="password" type="password" [ngClass]="getClass(adminLoginReactiveForm, 'password')" id="floatingPasswordUser" placeholder="Password">
-			  <label for="floatingPasswordUser">Password</label>
-			  <small *ngIf="adminLoginReactiveForm.get('password').invalid && adminLoginReactiveForm.get('password').touched" class="text-danger">
-			  Password is required and must be atleast 4 characters long</small>
-			</div>
+              <input
+                formControlName="username"
+                type="text"
+                [ngClass]="getClass(adminLoginReactiveForm, 'username')"
+                id="floatingInputAdmin"
+                placeholder="Username"
+              />
+              <label for="floatingInputAdmin">Username</label>
+              <small
+                *ngIf="
+                  adminLoginReactiveForm.get('username').invalid &&
+                  adminLoginReactiveForm.get('username').touched
+                "
+                class="text-danger"
+                >Username is required and must be atleast 5 characters
+                long</small
+              >
+            </div>
+
+            <div class="form-floating mb-3">
+              <input
+                formControlName="password"
+                type="password"
+                [ngClass]="getClass(adminLoginReactiveForm, 'password')"
+                id="floatingPasswordUser"
+                placeholder="Password"
+              />
+              <label for="floatingPasswordUser">Password</label>
+              <small
+                *ngIf="
+                  adminLoginReactiveForm.get('password').invalid &&
+                  adminLoginReactiveForm.get('password').touched
+                "
+                class="text-danger"
+              >
+                Password is required and must be atleast 4 characters
+                long</small
+              >
+            </div>
 
             <div class="text-center pt-4">
-              <button [disabled]="adminLoginReactiveForm.invalid" type="submit" class="btn btn-primary">Login</button>
+              <button
+                [disabled]="adminLoginReactiveForm.invalid"
+                type="submit"
+                class="btn btn-primary"
+              >
+                Login
+              </button>
             </div>
           </form>
         </div>

@@ -1,181 +1,365 @@
-<form [formGroup]="addScheduleReactiveForm" (ngSubmit)="addSchedule(addScheduleReactiveForm)"  id="addScheduleForm" *ngIf="!isUpdateScheduleForm">
+<form
+  [formGroup]="addScheduleReactiveForm"
+  (ngSubmit)="addSchedule(addScheduleReactiveForm)"
+  id="addScheduleForm"
+  *ngIf="!isUpdateScheduleForm"
+>
   <div class="form-group">
     <label for="campus">Campus</label>
-    <select formControlName="campus" id="campus" [ngClass]="getClass(addScheduleReactiveForm, 'campus')">
-      <option [ngValue]="null" [disabled]="true" >Select campus</option>
-      <option value="4killo" >CNCS</option>
-      <option [selected]=true value="5killo">AAiT</option>
+    <select
+      formControlName="campus"
+      id="campus"
+      [ngClass]="getClass(addScheduleReactiveForm, 'campus')"
+    >
+      <option [ngValue]="null" [disabled]="true">Select campus</option>
+      <option value="4killo">CNCS</option>
+      <option [selected]="true" value="5killo">AAiT</option>
       <option value="6killo">6 kilo</option>
     </select>
-	
-	<small *ngIf="addScheduleReactiveForm.get('campus').invalid && addScheduleReactiveForm.get('campus').touched" class="text-danger l-1">
-	Please select campus</small>
-  
-    </div>
 
-    <div class="form-group">
-      <label for="department">Departement</label>
-      <select formControlName="department" id="department" [ngClass]="getClass(addScheduleReactiveForm, 'department')">
-	    <option [ngValue]="null" [disabled]="true" >Select Departement</option>
-        <option value="Software Engineering">Software Engineering</option>
-        <option value="Electrical Engineering">Electrical Engineering</option>
-        <option value="Mechanical Engineering">Mechanical Engineering</option>
-        <option value="Biomedical Engineering">Biomedical Engineering</option>
-        <option value="Civil Engineering">Civil Engineering</option>
-        <option value="Chemical Engineering">Chemical Engineering</option>
-      </select>
-	  
-	  <small *ngIf="addScheduleReactiveForm.get('department').invalid && addScheduleReactiveForm.get('department').touched" class="text-danger l-1">
-	Please select department</small>
-	  
-      </div>
+    <small
+      *ngIf="
+        addScheduleReactiveForm.get('campus').invalid &&
+        addScheduleReactiveForm.get('campus').touched
+      "
+      class="text-danger l-1"
+    >
+      Please select campus</small
+    >
+  </div>
 
+  <div class="form-group">
+    <label for="department">Departement</label>
+    <select
+      formControlName="department"
+      id="department"
+      [ngClass]="getClass(addScheduleReactiveForm, 'department')"
+    >
+      <option [ngValue]="null" [disabled]="true">Select Departement</option>
+      <option value="Software Engineering">Software Engineering</option>
+      <option value="Electrical Engineering">Electrical Engineering</option>
+      <option value="Mechanical Engineering">Mechanical Engineering</option>
+      <option value="Biomedical Engineering">Biomedical Engineering</option>
+      <option value="Civil Engineering">Civil Engineering</option>
+      <option value="Chemical Engineering">Chemical Engineering</option>
+    </select>
 
-      <div class="form-group">
-        <label for="bach">Year Of Study</label>
-        <select formControlName="bach" id="bach" [ngClass]="getClass(addScheduleReactiveForm, 'bach')">
-          <option [ngValue]="null" [disabled]="true" >Enter year</option>
-          <option value="1">First</option>
-          <option value="2">Second</option>
-          <option value="3">Third</option>
-          <option value="4">Fourth</option>
-          <option value="5">Fifth</option>
-        </select>
-      <small *ngIf="addScheduleReactiveForm.get('bach').invalid && addScheduleReactiveForm.get('bach').touched" class="text-danger l-1">
-	Please select year</small>
-    
-      </div>
+    <small
+      *ngIf="
+        addScheduleReactiveForm.get('department').invalid &&
+        addScheduleReactiveForm.get('department').touched
+      "
+      class="text-danger l-1"
+    >
+      Please select department</small
+    >
+  </div>
 
-        <div class="form-group">
-          <label for="exampleInputEmail1">Section</label>
-          <input formControlName="section" type="number" [ngClass]="getClass(addScheduleReactiveForm, 'section')" id="name" aria-describedby="emailHelp" placeholder="Enter section">
-          <small *ngIf="addScheduleReactiveForm.get('section').invalid && addScheduleReactiveForm.get('section').touched" class="text-danger l-1">
-			Section is required</small>
-		  
-		  </div>
-  
+  <div class="form-group">
+    <label for="bach">Year Of Study</label>
+    <select
+      formControlName="bach"
+      id="bach"
+      [ngClass]="getClass(addScheduleReactiveForm, 'bach')"
+    >
+      <option [ngValue]="null" [disabled]="true">Enter year</option>
+      <option value="1">First</option>
+      <option value="2">Second</option>
+      <option value="3">Third</option>
+      <option value="4">Fourth</option>
+      <option value="5">Fifth</option>
+    </select>
+    <small
+      *ngIf="
+        addScheduleReactiveForm.get('bach').invalid &&
+        addScheduleReactiveForm.get('bach').touched
+      "
+      class="text-danger l-1"
+    >
+      Please select year</small
+    >
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Section</label>
+    <input
+      formControlName="section"
+      type="number"
+      [ngClass]="getClass(addScheduleReactiveForm, 'section')"
+      id="name"
+      aria-describedby="emailHelp"
+      placeholder="Enter section"
+    />
+    <small
+      *ngIf="
+        addScheduleReactiveForm.get('section').invalid &&
+        addScheduleReactiveForm.get('section').touched
+      "
+      class="text-danger l-1"
+    >
+      Section is required</small
+    >
+  </div>
+
   <div class="form-group">
     <label for="exampleInputEmail1">DAY</label>
-    <select formControlName="day" id="bach" [ngClass]="getClass(addScheduleReactiveForm, 'day')">
-      <option [ngValue]="null" [disabled]="true" >Select DAY</option>
+    <select
+      formControlName="day"
+      id="bach"
+      [ngClass]="getClass(addScheduleReactiveForm, 'day')"
+    >
+      <option [ngValue]="null" [disabled]="true">Select DAY</option>
       <option value="monday">Monday</option>
       <option value="tuesday">Tuesday</option>
       <option value="wednesday">Wednesday</option>
       <option value="thursday">Thursday</option>
       <option value="friday">Friday</option>
     </select>
-	<small *ngIf="addScheduleReactiveForm.get('day').invalid && addScheduleReactiveForm.get('day').touched" class="text-danger l-1">
-	Please select day</small>
-    </div>
-    <div class="form-group">
+    <small
+      *ngIf="
+        addScheduleReactiveForm.get('day').invalid &&
+        addScheduleReactiveForm.get('day').touched
+      "
+      class="text-danger l-1"
+    >
+      Please select day</small
+    >
+  </div>
+  <div class="form-group">
     <label for="exampleInputEmail1">Start Time</label>
-    <input formControlName="startTime" type="time" [ngClass]="getClass(addScheduleReactiveForm, 'startTime')" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
-    <small *ngIf="addScheduleReactiveForm.get('startTime').invalid && addScheduleReactiveForm.get('startTime').touched" class="text-danger l-1">
-	Start time is required</small>
-	
-	</div>
+    <input
+      formControlName="startTime"
+      type="time"
+      [ngClass]="getClass(addScheduleReactiveForm, 'startTime')"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      placeholder="Enter name"
+    />
+    <small
+      *ngIf="
+        addScheduleReactiveForm.get('startTime').invalid &&
+        addScheduleReactiveForm.get('startTime').touched
+      "
+      class="text-danger l-1"
+    >
+      Start time is required</small
+    >
+  </div>
 
-    <div class="form-group">
-      <label for="exampleInputEmail1">End Time</label>
-      <input formControlName="endTime" type="time" [ngClass]="getClass(addScheduleReactiveForm, 'endTime')" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
-    <small *ngIf="addScheduleReactiveForm.get('endTime').invalid && addScheduleReactiveForm.get('endTime').touched" class="text-danger l-1">
-	End time is required</small>
-	</div>
-	  
-    <div class="text-center" style="margin-top: 30px;">
-    <button [disabled]="addScheduleReactiveForm.invalid" type="submit" class="btn btn-primary">Add</button>
-    </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">End Time</label>
+    <input
+      formControlName="endTime"
+      type="time"
+      [ngClass]="getClass(addScheduleReactiveForm, 'endTime')"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      placeholder="Enter name"
+    />
+    <small
+      *ngIf="
+        addScheduleReactiveForm.get('endTime').invalid &&
+        addScheduleReactiveForm.get('endTime').touched
+      "
+      class="text-danger l-1"
+    >
+      End time is required</small
+    >
+  </div>
+
+  <div class="text-center" style="margin-top: 30px">
+    <button
+      [disabled]="addScheduleReactiveForm.invalid"
+      type="submit"
+      class="btn btn-primary"
+    >
+      Add
+    </button>
+  </div>
 </form>
 
-<form [formGroup]="updateScheduleReactiveForm" (ngSubmit)="updateSchedule(updateScheduleReactiveForm)" id="addScheduleForm" *ngIf="isUpdateScheduleForm">
+<form
+  [formGroup]="updateScheduleReactiveForm"
+  (ngSubmit)="updateSchedule(updateScheduleReactiveForm)"
+  id="addScheduleForm"
+  *ngIf="isUpdateScheduleForm"
+>
   <div class="form-group">
     <label for="campus">Campus</label>
-    <select formControlName="campus" id="campus" [ngClass]="getClass(updateScheduleReactiveForm, 'campus')">
-      <option [ngValue]="null" [disabled]="true" >Select campus</option>
+    <select
+      formControlName="campus"
+      id="campus"
+      [ngClass]="getClass(updateScheduleReactiveForm, 'campus')"
+    >
+      <option [ngValue]="null" [disabled]="true">Select campus</option>
       <option value="4killo">4 kilo</option>
       <option value="5killo">5 kilo</option>
       <option value="6killo">6 kilo</option>
     </select>
-	
-	<small *ngIf="updateScheduleReactiveForm.get('campus').invalid && updateScheduleReactiveForm.get('campus').touched" class="text-danger l-1">
-	Please select campus</small>
-  
-    </div>
 
-    <div class="form-group">
-      <label for="department">Departement</label>
-      <select formControlName="department" id="department" [ngClass]="getClass(updateScheduleReactiveForm, 'department')">
-	    <option [ngValue]="null" [disabled]="true" >Select Departement</option>
-        <option value="Software Engineering">Software Engineering</option>
-        <option value="Electrical Engineering">Electrical Engineering</option>
-        <option value="Mechanical Engineering">Mechanical Engineering</option>
-        <option value="Biomedical Engineering">Biomedical Engineering</option>
-        <option value="Civil Engineering">Civil Engineering</option>
-        <option value="Chemical Engineering">Chemical Engineering</option>
-      </select>
-	  
-	  <small *ngIf="updateScheduleReactiveForm.get('department').invalid && updateScheduleReactiveForm.get('department').touched" class="text-danger l-1">
-	Please select department</small>
-	  
-      </div>
+    <small
+      *ngIf="
+        updateScheduleReactiveForm.get('campus').invalid &&
+        updateScheduleReactiveForm.get('campus').touched
+      "
+      class="text-danger l-1"
+    >
+      Please select campus</small
+    >
+  </div>
 
+  <div class="form-group">
+    <label for="department">Departement</label>
+    <select
+      formControlName="department"
+      id="department"
+      [ngClass]="getClass(updateScheduleReactiveForm, 'department')"
+    >
+      <option [ngValue]="null" [disabled]="true">Select Departement</option>
+      <option value="Software Engineering">Software Engineering</option>
+      <option value="Electrical Engineering">Electrical Engineering</option>
+      <option value="Mechanical Engineering">Mechanical Engineering</option>
+      <option value="Biomedical Engineering">Biomedical Engineering</option>
+      <option value="Civil Engineering">Civil Engineering</option>
+      <option value="Chemical Engineering">Chemical Engineering</option>
+    </select>
 
-      <div class="form-group">
-        <label for="bach">Year Of Study</label>
-        <select formControlName="bach" id="bach" [ngClass]="getClass(updateScheduleReactiveForm, 'bach')">
-          <option [ngValue]="null" [disabled]="true" >Enter year</option>
-          <option value="1">First</option>
-          <option value="2">Second</option>
-          <option value="3">Third</option>
-          <option value="4">Fourth</option>
-          <option value="5">Fifth</option>
-        </select>
-      <small *ngIf="updateScheduleReactiveForm.get('bach').invalid && updateScheduleReactiveForm.get('bach').touched" class="text-danger l-1">
-	Please select year</small>
-    
-      </div>
+    <small
+      *ngIf="
+        updateScheduleReactiveForm.get('department').invalid &&
+        updateScheduleReactiveForm.get('department').touched
+      "
+      class="text-danger l-1"
+    >
+      Please select department</small
+    >
+  </div>
 
-        <div class="form-group">
-          <label for="exampleInputEmail1">Section</label>
-          <input formControlName="section" type="number" [ngClass]="getClass(updateScheduleReactiveForm, 'section')" id="name" aria-describedby="emailHelp" placeholder="Enter section">
-          <small *ngIf="updateScheduleReactiveForm.get('section').invalid && updateScheduleReactiveForm.get('section').touched" class="text-danger l-1">
-			Section is required</small>
-		  
-		  </div>
-  
+  <div class="form-group">
+    <label for="bach">Year Of Study</label>
+    <select
+      formControlName="bach"
+      id="bach"
+      [ngClass]="getClass(updateScheduleReactiveForm, 'bach')"
+    >
+      <option [ngValue]="null" [disabled]="true">Enter year</option>
+      <option value="1">First</option>
+      <option value="2">Second</option>
+      <option value="3">Third</option>
+      <option value="4">Fourth</option>
+      <option value="5">Fifth</option>
+    </select>
+    <small
+      *ngIf="
+        updateScheduleReactiveForm.get('bach').invalid &&
+        updateScheduleReactiveForm.get('bach').touched
+      "
+      class="text-danger l-1"
+    >
+      Please select year</small
+    >
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Section</label>
+    <input
+      formControlName="section"
+      type="number"
+      [ngClass]="getClass(updateScheduleReactiveForm, 'section')"
+      id="name"
+      aria-describedby="emailHelp"
+      placeholder="Enter section"
+    />
+    <small
+      *ngIf="
+        updateScheduleReactiveForm.get('section').invalid &&
+        updateScheduleReactiveForm.get('section').touched
+      "
+      class="text-danger l-1"
+    >
+      Section is required</small
+    >
+  </div>
+
   <div class="form-group">
     <label for="exampleInputEmail1">DAY</label>
-    <select formControlName="day" id="bach" [ngClass]="getClass(updateScheduleReactiveForm, 'day')">
-      <option [ngValue]="null" [disabled]="true" >Select DAY</option>
+    <select
+      formControlName="day"
+      id="bach"
+      [ngClass]="getClass(updateScheduleReactiveForm, 'day')"
+    >
+      <option [ngValue]="null" [disabled]="true">Select DAY</option>
       <option value="monday">Monday</option>
       <option value="tuesday">Tuesday</option>
       <option value="wednesday">Wednesday</option>
       <option value="thursday">Thursday</option>
       <option value="friday">Friday</option>
     </select>
-	<small *ngIf="updateScheduleReactiveForm.get('day').invalid && updateScheduleReactiveForm.get('day').touched" class="text-danger l-1">
-	Please select day</small>
-    </div>
-    <div class="form-group">
+    <small
+      *ngIf="
+        updateScheduleReactiveForm.get('day').invalid &&
+        updateScheduleReactiveForm.get('day').touched
+      "
+      class="text-danger l-1"
+    >
+      Please select day</small
+    >
+  </div>
+  <div class="form-group">
     <label for="exampleInputEmail1">Start Time</label>
-    <input formControlName="startTime" type="time" [ngClass]="getClass(updateScheduleReactiveForm, 'startTime')" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
-    <small *ngIf="updateScheduleReactiveForm.get('startTime').invalid && updateScheduleReactiveForm.get('startTime').touched" class="text-danger l-1">
-	Start time is required</small>
-	
-	</div>
+    <input
+      formControlName="startTime"
+      type="time"
+      [ngClass]="getClass(updateScheduleReactiveForm, 'startTime')"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      placeholder="Enter name"
+    />
+    <small
+      *ngIf="
+        updateScheduleReactiveForm.get('startTime').invalid &&
+        updateScheduleReactiveForm.get('startTime').touched
+      "
+      class="text-danger l-1"
+    >
+      Start time is required</small
+    >
+  </div>
 
-    <div class="form-group">
-      <label for="exampleInputEmail1">End Time</label>
-      <input formControlName="endTime" type="time" [ngClass]="getClass(updateScheduleReactiveForm, 'endTime')" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
-    <small *ngIf="updateScheduleReactiveForm.get('endTime').invalid && updateScheduleReactiveForm.get('endTime').touched" class="text-danger l-1">
-	End time is required</small>
-	</div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">End Time</label>
+    <input
+      formControlName="endTime"
+      type="time"
+      [ngClass]="getClass(updateScheduleReactiveForm, 'endTime')"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      placeholder="Enter name"
+    />
+    <small
+      *ngIf="
+        updateScheduleReactiveForm.get('endTime').invalid &&
+        updateScheduleReactiveForm.get('endTime').touched
+      "
+      class="text-danger l-1"
+    >
+      End time is required</small
+    >
+  </div>
 
-    
-
-    <input formControlName="id" type="hidden" aria-describedby="emailHelp" placeholder="Enter student id">
-    <div class="text-center" style="margin-top: 30px;">
-    <button [disabled]="updateScheduleReactiveForm.invalid" type="submit" class="btn btn-primary">Update</button>
-    </div>
+  <input
+    formControlName="id"
+    type="hidden"
+    aria-describedby="emailHelp"
+    placeholder="Enter student id"
+  />
+  <div class="text-center" style="margin-top: 30px">
+    <button
+      [disabled]="updateScheduleReactiveForm.invalid"
+      type="submit"
+      class="btn btn-primary"
+    >
+      Update
+    </button>
+  </div>
 </form>
-

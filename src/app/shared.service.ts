@@ -3,92 +3,91 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SharedService {
-  readonly APIUrl  = 'http://localhost:8000';
+  readonly APIUrl = 'http://localhost:8000';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getStudentList():Observable<any[]>{
+  getStudentList(): Observable<any[]> {
     return this.http.get<any>(this.APIUrl + '/student/');
   }
 
-  addStudent(val:any){
+  addStudent(val: any) {
     return this.http.post(this.APIUrl + '/student/', val);
   }
 
-  updateStudent(val:any){
+  updateStudent(val: any) {
     return this.http.put(this.APIUrl + '/student/', val);
   }
 
-  deleteStudent(val:any){
+  deleteStudent(val: any) {
     return this.http.delete(this.APIUrl + '/student/' + val);
   }
 
-  getUserList():Observable<any[]>{
+  getUserList(): Observable<any[]> {
     return this.http.get<any>(this.APIUrl + '/user/');
   }
 
-  getUser(id:any){
+  getUser(id: any) {
     return this.http.get<any>(this.APIUrl + '/user/', id);
   }
 
-  addUser(val:any){
+  addUser(val: any) {
     return this.http.post(this.APIUrl + '/user/', val);
   }
 
-  updateUser(val:any){
+  updateUser(val: any) {
     return this.http.put(this.APIUrl + '/user/', val);
   }
 
-  deleteUser(val:any){
+  deleteUser(val: any) {
     return this.http.delete(this.APIUrl + '/user/' + val);
   }
 
-  getScheduleList():Observable<any[]>{
+  getScheduleList(): Observable<any[]> {
     return this.http.get<any>(this.APIUrl + '/schedule/');
   }
 
-  addSchedule(val:any){
+  addSchedule(val: any) {
     return this.http.post(this.APIUrl + '/schedule/', val);
   }
 
-  updateSchedule(val:any){
+  updateSchedule(val: any) {
     return this.http.put(this.APIUrl + '/schedule/', val);
   }
 
-  deleteSchedule(val:any){
+  deleteSchedule(val: any) {
     return this.http.delete(this.APIUrl + '/schedule/' + val);
   }
-  
-  login(val:any){
-	return this.http.post(this.APIUrl + '/api/login/', val);
+
+  login(val: any) {
+    return this.http.post(this.APIUrl + '/api/login/', val);
   }
-  
-  getUserProfile(){
-	  return this.http.get(this.APIUrl + '/profile/');
+
+  getUserProfile() {
+    return this.http.get(this.APIUrl + '/profile/');
   }
-  
-  loggedIn(){
-	return !!localStorage.getItem('token');
+
+  loggedIn() {
+    return !!localStorage.getItem('token');
   }
-  
-  getToken(){
-	return localStorage.getItem('token');
+
+  getToken() {
+    return localStorage.getItem('token');
   }
-	
-	
-  logout(){
-	 localStorage.removeItem("token");
-   localStorage.removeItem("role");
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
   }
-  
-  scan(val:any=null):Observable<any>{
+
+  scan(val: any = null): Observable<any> {
     return this.http.post(this.APIUrl + '/scan/', val);
   }
-  
-  getStat():Observable<any>{
+
+  getStat(): Observable<any> {
     return this.http.get(this.APIUrl + '/students/expected/');
   }
 }

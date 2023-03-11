@@ -6,19 +6,21 @@ import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-schedule',
   templateUrl: './schedule.component.html',
-  styleUrls: ['./schedule.component.css']
+  styleUrls: ['./schedule.component.css'],
 })
 export class ScheduleComponent implements OnInit {
-
-  constructor(private service:SharedService, private router:Router, private title:Title) { }
+  constructor(
+    private service: SharedService,
+    private router: Router,
+    private title: Title
+  ) {}
 
   ngOnInit(): void {
-	this.title.setTitle("Manage Schedule");
+    this.title.setTitle('Manage Schedule');
   }
 
-  logout():void{
+  logout(): void {
     this.service.logout();
-    this.router.navigateByUrl("/");
+    this.router.navigateByUrl('/');
   }
-
 }

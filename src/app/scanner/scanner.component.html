@@ -1,27 +1,28 @@
 <nav class="admin-nav navbar navbar-expand-sm bg-light navbar-dark">
   <h4>Scan Student ID</h4>
-  <span style="display:flex">
-  <a routerLink="/statistics" class="nav-link fw-bold ">Statistics</a>
+  <span style="display: flex">
+    <a routerLink="/statistics" class="nav-link fw-bold">Statistics</a>
 
-  <button (click)="logout()" type="button" class="btn btn-secondary btn-sm">Logout</button>
+    <button (click)="logout()" type="button" class="btn btn-secondary btn-sm">
+      Logout
+    </button>
   </span>
-  
 </nav>
 
-<div style="margin-bottom:50px;"></div>
+<div style="margin-bottom: 50px"></div>
 
-<div *ngIf="isScannerPage()" class="text-center" style="margin-top:50px">
-	<p class="text-info">Click the button below to scan ID</p>
-	<button (click)="scanId()" type="button" class="btn btn-lg btn-outline-primary">Scan</button>
+<div *ngIf="isScannerPage()" class="text-center" style="margin-top: 50px">
+  <p class="text-info">Click the button below to scan ID</p>
+  <button
+    (click)="scanId()"
+    type="button"
+    class="btn btn-lg btn-outline-primary"
+  >
+    Scan
+  </button>
 </div>
 
 <app-verify-sucess [reason]="parentReason" *ngIf="isScannerSuccessPage()">
-
 </app-verify-sucess>
 <app-verify-failed [reason]="parentReason" *ngIf="isScannerFailedPage()">
-
-
 </app-verify-failed>
-
-
-

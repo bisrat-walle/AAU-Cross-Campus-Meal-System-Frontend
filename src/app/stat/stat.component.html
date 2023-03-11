@@ -1,28 +1,37 @@
 <nav class="admin-nav navbar navbar-expand-sm bg-light navbar-dark">
   <h4>Statistics</h4>
-  <span style="display:flex">
-  <a routerLink="/scanner" class="nav-link fw-bold ">Scanner</a>
+  <span style="display: flex">
+    <a routerLink="/scanner" class="nav-link fw-bold">Scanner</a>
 
-  <button (click)="logout()" type="button" class="btn btn-secondary btn-sm">Logout</button>
+    <button (click)="logout()" type="button" class="btn btn-secondary btn-sm">
+      Logout
+    </button>
   </span>
 </nav>
 
-<div class="card" style="min-width: 25rem; max-width:600px;margin-top: 20px !important; margin:auto">
+<div
+  class="card"
+  style="
+    min-width: 25rem;
+    max-width: 600px;
+    margin-top: 20px !important;
+    margin: auto;
+  "
+>
   <div class="card-body">
-    <h5 class="card-title">Students statistics - {{day | uppercase}}</h5>
+    <h5 class="card-title">Students statistics - {{ day | uppercase }}</h5>
     <h6 class="card-subtitle mb-2 text-muted">AAU Meal System</h6>
     <ul class="list-group">
-	  <li class="list-group-item">All AAU Students: {{allStudents}}</li>
-	  <li class="list-group-item">Expected AAiT students who have schedule
-	  
-	  <ul class="list-group">
-	<li class="list-group-item">Breakfast: {{breakfast}}</li>
-	  <li class="list-group-item">Lunch: {{lunch}}</li>
-	  <li class="list-group-item">Dinner: {{dinner}}</li>
-	  
-	  </ul>
-	  </li>
-	  
-	</ul>
+      <li class="list-group-item">All AAU Students: {{ allStudents }}</li>
+      <li class="list-group-item">
+        Expected AAiT students who have schedule
+
+        <ul class="list-group">
+          <li class="list-group-item">Breakfast: {{ breakfast }}</li>
+          <li class="list-group-item">Lunch: {{ lunch }}</li>
+          <li class="list-group-item">Dinner: {{ dinner }}</li>
+        </ul>
+      </li>
+    </ul>
   </div>
 </div>

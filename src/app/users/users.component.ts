@@ -6,23 +6,21 @@ import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
-
-  constructor(private service:SharedService, private router:Router, private title:Title) { }
+  constructor(
+    private service: SharedService,
+    private router: Router,
+    private title: Title
+  ) {}
 
   ngOnInit(): void {
-	this.title.setTitle("Manage Users");
+    this.title.setTitle('Manage Users');
   }
 
-
-  logout():void{
+  logout(): void {
     this.service.logout();
-    this.router.navigateByUrl("/");
+    this.router.navigateByUrl('/');
   }
-
-
-
-
 }

@@ -44,23 +44,26 @@ import { StatComponent } from './stat/stat.component';
     ShowScheduleComponent,
     VerifySucessComponent,
     VerifyFailedComponent,
-    StatComponent
+    StatComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule, 
-    FormsModule, 
+    HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
-	NgbModule
+    NgbModule,
   ],
-  providers: [SharedService, AdminGuardGuard, AuthGuard,
-	{
-		provide: HTTP_INTERCEPTORS,
-		useClass: TokenInterceptorService,
-		multi: true
-	}
+  providers: [
+    SharedService,
+    AdminGuardGuard,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,19 +1,19 @@
-.getStarted{
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    max-width: 500px;
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 50px;	
+.getStarted {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  max-width: 500px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 50px;
 }
-.meal-title{
-	text-align:center;
+.meal-title {
+  text-align: center;
 }
 
 .cont-home-style {
-    min-height: 75vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

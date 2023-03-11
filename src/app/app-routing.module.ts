@@ -12,25 +12,39 @@ import { AdminGuardGuard } from './admin-guard.guard';
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  {path:'student', component: StudentsComponent, canActivate:[AuthGuard, AdminGuardGuard]},
-  {path:'user', component: UsersComponent, canActivate:[AuthGuard, AdminGuardGuard]},
-  {path:'scanner', component: ScannerComponent, 
-   children: [
-    {path:'', redirectTo:"login", pathMatch:"full"},
-    {path:'failed',component:ScannerComponent},
-	{path:'verified',component:ScannerComponent}
-   ],
-   canActivate:[AuthGuard]
+  {
+    path: 'student',
+    component: StudentsComponent,
+    canActivate: [AuthGuard, AdminGuardGuard],
+  },
+  {
+    path: 'user',
+    component: UsersComponent,
+    canActivate: [AuthGuard, AdminGuardGuard],
+  },
+  {
+    path: 'scanner',
+    component: ScannerComponent,
+    children: [
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
+      { path: 'failed', component: ScannerComponent },
+      { path: 'verified', component: ScannerComponent },
+    ],
+    canActivate: [AuthGuard],
   },
 
-  {path:'schedule', component: ScheduleComponent, canActivate:[AuthGuard, AdminGuardGuard]},
-  {path:'', component: HomePageComponent},
-  {path:'login', component: LoginComponent},
-  {path:'statistics', component: StatComponent, canActivate:[AuthGuard]}
+  {
+    path: 'schedule',
+    component: ScheduleComponent,
+    canActivate: [AuthGuard, AdminGuardGuard],
+  },
+  { path: '', component: HomePageComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'statistics', component: StatComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
